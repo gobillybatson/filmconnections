@@ -421,6 +421,20 @@
     }
     .archive-buttons a:hover{ background:#2563eb; }
     .archive-buttons a:active{ transform: translateY(1px); }
+
+    .archive-buttons .current-archive{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:44px;
+      min-height:44px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#e5e7eb;
+      color:#111827;
+      font-weight:900;
+      border:1px solid #d1d5db;
+    }
     .archive-note{
       margin:8px 0 0;
       color:var(--muted);
@@ -688,7 +702,7 @@
     <header>
       <div>
         <div class="title-row">
-          <a href="..index.html" class="title-button title-image-link" aria-label="Go to today’s puzzle">
+          <a href="../index.html" class="title-button title-image-link" aria-label="Go to today’s puzzle">
             <img src="../images/film-connections-button.png" alt="Film Connections" class="title-image">
           </a>
           <span class="title-theme">1998</span>
@@ -742,33 +756,33 @@
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "airplane", movieTitle: "Airplane!", difficulty: 1, posterImg: "..images/posters/airplane.jpg" },
-      { groupId: "the_terminator", movieTitle: "The Terminator", difficulty: 2, posterImg: "..images/posters/terminator_1984_german_original_film_art_5000x.webp" },
-      { groupId: "stand_by_me", movieTitle: "Stand By Me", difficulty: 3, posterImg: "..images/posters/standbyme.webp" },
-      { groupId: "twilight_zone_the_movie", movieTitle: "Twilight Zone: The Movie", difficulty: 4, posterImg: "..images/posters/twilightzone.jpg" },
+      { groupId: "airplane", movieTitle: "Airplane!", difficulty: 1, posterImg: "../images/posters/airplane.jpg" },
+      { groupId: "the_terminator", movieTitle: "The Terminator", difficulty: 2, posterImg: "../images/posters/terminator_1984_german_original_film_art_5000x.webp" },
+      { groupId: "stand_by_me", movieTitle: "Stand By Me", difficulty: 3, posterImg: "../images/posters/standbyme.webp" },
+      { groupId: "twilight_zone_the_movie", movieTitle: "Twilight Zone: The Movie", difficulty: 4, posterImg: "../images/posters/twilightzone.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Cusak", img:"..images/actors/cusak.jpg", groupId:"stand_by_me" },
-      { id:"a2", name:"Kiefer Sutherland", img:"..images/actors/sutherland.webp", groupId:"stand_by_me" },
-      { id:"a3", name:"Richard Dreyfuss", img:"..images/actors/dreyfuss.jpg", groupId:"stand_by_me" },
-      { id:"a4", name:"River Phoenix", img:"..images/actors/phoenix.webp", groupId:"stand_by_me" },
+      { id:"a1", name:"John Cusak", img:"../images/actors/cusak.jpg", groupId:"stand_by_me" },
+      { id:"a2", name:"Kiefer Sutherland", img:"../images/actors/sutherland.webp", groupId:"stand_by_me" },
+      { id:"a3", name:"Richard Dreyfuss", img:"../images/actors/dreyfuss.jpg", groupId:"stand_by_me" },
+      { id:"a4", name:"River Phoenix", img:"../images/actors/phoenix.webp", groupId:"stand_by_me" },
 
-      { id:"b1", name:"Peter Graves", img:"..images/actors/graves.jpg", groupId:"airplane" },
-      { id:"b2", name:"Kareem Abdul Jabar", img:"..images/actors/abduljabar.webp", groupId:"airplane" },
-      { id:"b3", name:"Leslie Nielsen", img:"..images/actors/nielsen.jpg", groupId:"airplane" },
-      { id:"b4", name:"Lloyd Bridges", img:"..images/actors/bridgeslloyd.jpeg", groupId:"airplane" },
+      { id:"b1", name:"Peter Graves", img:"../images/actors/graves.jpg", groupId:"airplane" },
+      { id:"b2", name:"Kareem Abdul Jabar", img:"../images/actors/abduljabar.webp", groupId:"airplane" },
+      { id:"b3", name:"Leslie Nielsen", img:"../images/actors/nielsen.jpg", groupId:"airplane" },
+      { id:"b4", name:"Lloyd Bridges", img:"../images/actors/bridgeslloyd.jpeg", groupId:"airplane" },
 
-      { id:"c1", name:"Burgess Meredith", img:"..images/actors/meredith.jpeg", groupId:"twilight_zone_the_movie" },
-      { id:"c2", name:"John Lithgow", img:"..images/actors/lithgow.jpg", groupId:"twilight_zone_the_movie" },
-      { id:"c3", name:"Dan Aykroyd", img:"..images/actors/aykroyd.webp", groupId:"twilight_zone_the_movie" },
-      { id:"c4", name:"Albert Brooks", img:"..images/actors/brooks.jpg", groupId:"twilight_zone_the_movie" },
+      { id:"c1", name:"Burgess Meredith", img:"../images/actors/meredith.jpeg", groupId:"twilight_zone_the_movie" },
+      { id:"c2", name:"John Lithgow", img:"../images/actors/lithgow.jpg", groupId:"twilight_zone_the_movie" },
+      { id:"c3", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"twilight_zone_the_movie" },
+      { id:"c4", name:"Albert Brooks", img:"../images/actors/brooks.jpg", groupId:"twilight_zone_the_movie" },
 
-      { id:"d1", name:"Dick Miller", img:"..images/actors/miller.webp", groupId:"the_terminator" },
-      { id:"d2", name:"Bill Paxton", img:"..images/actors/paxton.jpg", groupId:"the_terminator" },
-      { id:"d3", name:"Lance Henriksen", img:"..images/actors/henriksen.webp", groupId:"the_terminator" },
-      { id:"d4", name:"Michael Biehn", img:"..images/actors/biehn.jpg", groupId:"the_terminator" },
+      { id:"d1", name:"Dick Miller", img:"../images/actors/miller.webp", groupId:"the_terminator" },
+      { id:"d2", name:"Bill Paxton", img:"../images/actors/paxton.jpg", groupId:"the_terminator" },
+      { id:"d3", name:"Lance Henriksen", img:"../images/actors/henriksen.webp", groupId:"the_terminator" },
+      { id:"d4", name:"Michael Biehn", img:"../images/actors/biehn.jpg", groupId:"the_terminator" },
     ];
 
 
@@ -790,9 +804,20 @@
         return;
       }
 
+      const currentArchiveNumber = 1;
+
       for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
+        if (i === currentArchiveNumber) {
+          const span = document.createElement("span");
+          span.className = "current-archive";
+          span.textContent = i;
+          span.setAttribute("aria-current", "page");
+          archiveEl.appendChild(span);
+          continue;
+        }
+
         const a = document.createElement("a");
-        a.href = `./archives/${i}.html`;
+        a.href = `${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
