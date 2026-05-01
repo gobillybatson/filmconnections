@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Play Film Connections, it's like Connections, but with actors, actresses and movies">
-  <title>Film Connections - 80's Favorites</title>
+  <title>Film Connections - 1998</title>
   <style>
     :root{
       --bg:#f4f5f7;
@@ -689,11 +689,11 @@
       <div>
         <div class="title-row">
           <a href="index.html" class="title-button title-image-link" aria-label="Go to today’s puzzle">
-            <img src="../images/film-connections-button.png" alt="Film Connections" class="title-image">
+            <img src="./images/film-connections-button.png" alt="Film Connections" class="title-image">
           </a>
-          <span class="title-theme">80's favorites</span>
+          <span class="title-theme">1998</span>
         </div>
-        <p class="sub">They were in the 80's....and they were someone's favorites!</p>
+        <p class="sub">One of the best years for movies ever...and Steve Buscemi was in most of them!</p>
 
         <div class="controls controls-under-sub">
           <button id="btnShuffle" type="button">Shuffle</button>
@@ -741,34 +741,34 @@
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
-   const GROUPS = [
-      { groupId: "airplane", movieTitle: "Airplane!", difficulty: 1, posterImg: "../images/posters/airplane.jpg" },
-      { groupId: "the_terminator", movieTitle: "The Terminator", difficulty: 2, posterImg: "../images/posters/terminator_1984_german_original_film_art_5000x.webp" },
-      { groupId: "stand_by_me", movieTitle: "Stand By Me", difficulty: 3, posterImg: "../images/posters/standbyme.webp" },
-      { groupId: "twilight_zone_the_movie", movieTitle: "Twilight Zone: The Movie", difficulty: 4, posterImg: "../images/posters/twilightzone.jpg" },
+    const GROUPS = [
+      { groupId: "armageddon", movieTitle: "Armageddon", difficulty: 1, posterImg: "images/posters/armageddon.jpg" },
+      { groupId: "privateryan", movieTitle: "Saving Private Ryan", difficulty: 2, posterImg: "images/posters/savingprivateryan.jpg" },
+      { groupId: "biglebowski", movieTitle: "The Big Lebowski", difficulty: 3, posterImg: "images/posters/biglebowski.jpeg" },
+      { groupId: "weddingsinger", movieTitle: "The Wedding Singer", difficulty: 4, posterImg: "images/posters/weddingsinger.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Cusak", img:"../images/actors/cusak.jpg", groupId:"stand_by_me" },
-      { id:"a2", name:"Kiefer Sutherland", img:"../images/actors/sutherland.webp", groupId:"stand_by_me" },
-      { id:"a3", name:"Richard Dreyfuss", img:"../images/actors/dreyfuss.jpg", groupId:"stand_by_me" },
-      { id:"a4", name:"River Phoenix", img:"../images/actors/phoenix.webp", groupId:"stand_by_me" },
+      { id:"a1", name:"Jeff Bridges", img:"./images/actors/bridges.jpg", groupId:"biglebowski" },
+      { id:"a2", name:"John Goodman", img:"./images/actors/goodman.jpg", groupId:"biglebowski" },
+      { id:"a3", name:"Julianne Moore", img:"./images/actors/moorejulianne.jpg", groupId:"biglebowski" },
+      { id:"a4", name:"Philip Seymore Hoffman", img:"./images/actors/hoffman.webp", groupId:"biglebowski" },
 
-      { id:"b1", name:"Peter Graves", img:"../images/actors/graves.jpg", groupId:"airplane" },
-      { id:"b2", name:"Kareem Abdul Jabar", img:"../images/actors/abduljabar.webp", groupId:"airplane" },
-      { id:"b3", name:"Leslie Nielsen", img:"../images/actors/nielsen.jpg", groupId:"airplane" },
-      { id:"b4", name:"Lloyd Bridges", img:"../images/actors/bridgeslloyd.jpeg", groupId:"airplane" },
+      { id:"b1", name:"Bruce Willis", img:"./images/actors/willis.jpg", groupId:"armageddon" },
+      { id:"b2", name:"Ben Affleck", img:"./images/actors/affleck.jpg", groupId:"armageddon" },
+      { id:"b3", name:"Owen Wilson", img:"./images/actors/wilson.jpg", groupId:"armageddon" },
+      { id:"b4", name:"Liv Tyler", img:"./images/actors/tyler.jpg", groupId:"armageddon" },
 
-      { id:"c1", name:"Burgess Meredith", img:"../images/actors/meredith.jpeg", groupId:"twilight_zone_the_movie" },
-      { id:"c2", name:"John Lithgow", img:"../images/actors/lithgow.jpg", groupId:"twilight_zone_the_movie" },
-      { id:"c3", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"twilight_zone_the_movie" },
-      { id:"c4", name:"Albert Brooks", img:"../images/actors/brooks.jpg", groupId:"twilight_zone_the_movie" },
+      { id:"c1", name:"Adam Sandler", img:"./images/actors/sandler.avif", groupId:"weddingsinger" },
+      { id:"c2", name:"Drew Barrymore", img:"./images/actors/barrymore.webp", groupId:"weddingsinger" },
+      { id:"c3", name:"Billy Idol", img:"./images/actors/idol.jpg", groupId:"weddingsinger" },
+      { id:"c4", name:"Steve Buscemi", img:"./images/actors/buscemi.jpg", groupId:"weddingsinger" },
 
-      { id:"d1", name:"Dick Miller", img:"../images/actors/miller.webp", groupId:"the_terminator" },
-      { id:"d2", name:"Bill Paxton", img:"../images/actors/paxton.jpg", groupId:"the_terminator" },
-      { id:"d3", name:"Lance Henriksen", img:"../images/actors/henriksen.webp", groupId:"the_terminator" },
-      { id:"d4", name:"Michael Biehn", img:"../images/actors/biehn.jpg", groupId:"the_terminator" },
+      { id:"d1", name:"Tom Hanks", img:"./images/actors/hanks.jpg", groupId:"privateryan" },
+      { id:"d2", name:"Matt Damon", img:"./images/actors/damon.jpg", groupId:"privateryan" },
+      { id:"d3", name:"Ted Danson", img:"./images/actors/danson.jpg.webp", groupId:"privateryan" },
+      { id:"d4", name:"Vin Diesel", img:"./images/actors/diesel.jpg", groupId:"privateryan" },
     ];
 
 
