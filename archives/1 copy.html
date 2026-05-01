@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Play Film Connections, it's like Connections, but with actors, actresses and movies">
   <title>Film Connections - 80's Favorites</title>
   <style>
     :root{
@@ -68,9 +69,13 @@
       letter-spacing:.2px;
     }
     .sub{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-size: 14px;
+      /* Responsive sizing (bigger + bolder) without consuming extra vertical space */
+      margin:0 0 6px 0;
+      color:#111827;
+      font-size:clamp(16px, 2.0vw, 20px);
+      font-weight:800;
+      line-height:1.2;
+      letter-spacing:0.2px;
     }
 
     .controls{
@@ -96,43 +101,26 @@
     button:active{ transform: translateY(1px); }
     button:disabled{ opacity:.5; cursor:not-allowed; }
 
-    /* Archive panel */
-    .archive{
-      /* moved below the board, so give it top spacing */
-      margin: 6px 0 0;
-      background: var(--panel);
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 14px 16px;
+/* Controls positioned under subtitle */
+    .controls-under-sub{
+      margin-top: 12px;
+      justify-content: flex-start;
     }
-    .archiveHead{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom: 10px;
-    }
-    .archive h2{
-      margin:0;
+    .controls-under-sub button{
       font-size: 16px;
-      letter-spacing: .2px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
     }
-    .archive ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
+    /* Emphasize Submit */
+    #btnSubmit{
+      background: #111827;
+      color: #ffffff;
+      border-color: #111827;
     }
-    .archive a{
-      text-decoration:none;
-      font-weight: 800;
-      color: var(--text);
-    }
-    .archive a:hover{ text-decoration: underline; }
-
+    #btnSubmit:hover{ background:#1f2937; }
+    
     .board{
       position:relative;
       background: var(--panel);
@@ -288,15 +276,46 @@
       transition: transform .15s ease;
     }
 
-
     .tile.selected{
-      border-color: transparent;
+      border-color: #111827;
       box-shadow:
-        0 0 0 4px #ffffff,
-        0 0 0 7px rgba(17,24,39,1),
-        0 0 14px rgba(17,24,39,.45);
-      z-index: 2;
+        0 0 0 4px rgba(255,255,255,0.95),
+        0 0 0 8px rgba(37,99,235,0.95),
+        0 18px 40px rgba(0,0,0,.22);
+      transform: translateY(-2px) scale(1.02);
+      z-index: 3;
+      animation: selectedPop .18s ease-out;
     }
+    .tile.selected::after{
+      content: "✓";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(37,99,235,0.98);
+      color: #fff;
+      font-weight: 1000;
+      font-size: 18px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.25);
+      border: 2px solid rgba(255,255,255,.9);
+      pointer-events: none;
+    }
+    /* Make the name strip show while selected (even without hover) */
+    .tile.selected .nameOverlay{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Subtle "selected" pulse once */
+    @keyframes selectedPop {
+      0%   { transform: translateY(0) scale(1); }
+      60%  { transform: translateY(-3px) scale(1.04); }
+      100% { transform: translateY(-2px) scale(1.02); }
+    }
+
 
     /* Shake (wrong guess) */
     @keyframes shake {
@@ -365,14 +384,112 @@
       transform: translateX(-50%) scale(1);
     }
 
-    @media (max-width: 520px){
-      header{ flex-direction:column; align-items:flex-start; }
-      .controls{ justify-content:flex-start; }
-      .posterPop{ width: 140px; }
-      .solvedActors{ max-width: 260px; }
+
+    /* Archive buttons */
+    .archive{
+      margin: 18px 0 0;
+      background: var(--panel);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 16px;
     }
-  
-/* --- Title image button + daily category layout --- */
+    .archive h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .archive-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .archive-buttons a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:44px;
+      min-height:44px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#111827;
+      color:#ffffff;
+      text-decoration:none;
+      font-weight:900;
+      box-shadow:0 2px 0 rgba(0,0,0,.08);
+      transition: transform .06s ease, background .15s ease;
+    }
+    .archive-buttons a:hover{ background:#2563eb; }
+    .archive-buttons a:active{ transform: translateY(1px); }
+    .archive-note{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    @media (max-width: 520px){
+  /* Make header more compact so the grid can be larger */
+  .wrap{ margin: 14px auto; padding: 0 12px 28px; }
+  header{ flex-direction:column; align-items:flex-start; gap: 10px; }
+  .sub{ font-weight:800; letter-spacing:0.15px; font-size: 16px; }
+
+  /* Title + theme smaller on mobile */
+  .title-image{ height: 70px; }
+  .title-theme{ font-size: 24px; letter-spacing: 0.4px; }
+
+  /* Controls: 2 rows (Submit first + easiest to reach) */
+  .controls{ justify-content:flex-start; }
+  .controls-under-sub{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "deselect shuffle"
+      "reset reset";
+    gap: 10px;
+    width: 100%;
+  }
+  .controls-under-sub button{
+    width: 100%;
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  /* Submit moves into the puzzle frame on mobile */
+  .controls-under-sub #btnSubmit{ display: none; }
+  #btnDeselect{ grid-area: deselect; }
+  #btnShuffle{ grid-area: shuffle; }
+  #btnReset{ grid-area: reset; }
+
+  .posterPop{ width: 140px; }
+  .solvedActors{ max-width: 260px; }
+  /* Board: use the full screen width and center the scaled board (prevents empty space on the right) */
+  .board-scale{ transform-origin: top center; width: 100%; }
+  .board{ width: 100%; padding: 10px; }
+  .grid{ gap: 5px; }
+
+  /* Status row: keep "Mistakes left" + Submit together */
+  .statusRow{ flex-wrap: nowrap; align-items: center; }
+  .msg{ flex: 1; min-width: 0; }
+  .statusActions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex: 0 0 auto;
+  }
+  /* Compact submit when inside the frame */
+  #btnSubmit.inFrame{
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1;
+    box-shadow: 0 2px 0 rgba(0,0,0,.06);
+  }
+
+}
+
+/* --- Title image button + daily category layout --- */ + daily category layout --- */
 .title-row{
   display:flex;
   align-items:center;
@@ -431,6 +548,138 @@
   letter-spacing: 0.6px;
 }
 
+
+    /* ===== Stone 3D flip + poster merge (correct guess) ===== */
+    .tile{
+      perspective: 1200px;
+    }
+    .tile-inner{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(.2,.9,.2,1);
+    }
+    .tile.stone .tile-inner{
+      transition-duration: 3s; /* slow dramatic flip */
+    }
+    .tile.flipped .tile-inner{
+      transform: rotateY(180deg);
+    }
+    .tile-face{
+      position:absolute;
+      inset:0;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      overflow:hidden;
+    }
+    .tile-front{
+      background: var(--tile);
+    }
+    .tile-back{
+      transform: rotateY(180deg);
+      background-size: 200% 200%;
+      background-repeat: no-repeat;
+      box-shadow:
+        inset 0 0 40px rgba(0,0,0,.35),
+        inset 0 0 0 6px rgba(255,255,255,.08);
+      filter: contrast(1.05) saturate(0.95);
+    }
+    .tile.stone{
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.35),
+        inset 0 0 0 4px rgba(0,0,0,.15);
+    }
+
+  
+
+    /* ===== Wrong-guess screen shake ===== */
+    @keyframes screenShake {
+      0%   { transform: translate3d(0,0,0); }
+      20%  { transform: translate3d(-6px, 2px, 0); }
+      40%  { transform: translate3d(6px, -2px, 0); }
+      60%  { transform: translate3d(-4px, -1px, 0); }
+      80%  { transform: translate3d(4px, 1px, 0); }
+      100% { transform: translate3d(0,0,0); }
+    }
+    body.shake{
+      animation: screenShake 180ms ease-in-out;
+    }
+
+  
+/* ---- SOLVED TOAST ---- */
+.solved-toast{
+  position: fixed;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  pointer-events: none;
+  transition: top 420ms cubic-bezier(.2,.9,.2,1), opacity 300ms ease;
+  opacity: 0;
+}
+
+.solved-toast.show{
+  top: 16px;
+  opacity: 1;
+}
+
+.solved-toast-inner{
+  background: #111827;
+  color: #fff;
+  border-radius: 18px;
+  padding: 14px 22px 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  text-align: center;
+}
+
+.solved-toast-title{
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.solved-toast-sub{
+  font-size: 13px;
+  opacity: .85;
+  margin-top: 4px;
+}
+
+
+/* MOBILE FIX: move instructions above mistakes/status row */
+@media (max-width: 520px) {
+  .instructions {
+    order: -1;
+    width: 100%;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+
+/* MOBILE: instructions (msg) above mistakes row */
+@media (max-width: 520px) {
+  .statusRow{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .statusRow .msg{
+    width: 100%;
+    text-align: center;
+    margin: 0 0 2px 0;
+  }
+  .statusRow .statusActions{
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 </style>
 </head>
 
@@ -440,17 +689,18 @@
       <div>
         <div class="title-row">
           <a href="index.html" class="title-button title-image-link" aria-label="Go to today’s puzzle">
-            <img src="..images/film-connections-button.png" alt="Film Connections" class="title-image">
+            <img src="../images/film-connections-button.png" alt="Film Connections" class="title-image">
           </a>
-          <span class="title-theme">80's Favorites</span>
+          <span class="title-theme">80's favorites</span>
         </div>
-        <p class="sub">Select 4 actors who were all in the same movie. Solve 4 groups.</p>
-      </div>
-      <div class="controls">
-        <button id="btnShuffle" type="button">Shuffle</button>
-        <button id="btnDeselect" type="button">Deselect All</button>
-        <button id="btnSubmit" type="button">Submit</button>
-        <button id="btnReset" type="button">Reset</button>
+        <p class="sub">They were in the 80's....and they were someone's favorites!</p>
+
+        <div class="controls controls-under-sub">
+          <button id="btnShuffle" type="button">Shuffle</button>
+          <button id="btnDeselect" type="button">Deselect All</button>
+          <button id="btnSubmit" type="button">Submit</button>
+          <button id="btnReset" type="button">Reset</button>
+        </div>
       </div>
     </header>
 
@@ -458,7 +708,9 @@
       <div class="board" id="board">
         <div class="statusRow">
           <div class="msg" id="msg"></div>
-          <div class="attempts" id="attempts"></div>
+          <div class="statusActions" id="statusActions">
+            <div class="attempts" id="attempts"></div>
+          </div>
         </div>
 
       <!-- NYT-style solved category bars -->
@@ -474,15 +726,11 @@
     </div>
     </div>
 
-    <!-- Archive list (MOVED BELOW THE PUZZLE) -->
-    <!-- Archive list -->
-    <section class="archive">
-      <div class="archiveHead">
-        <h2>Past Puzzles</h2>
-        <button id="toggleArchive" type="button">Show all</button>
-      </div>
-      <ul id="archiveList"></ul>
+    <section class="archive" aria-label="Past puzzles">
+      <h2>Past Puzzles</h2>
+      <div class="archive-buttons" id="archiveButtons"></div>
     </section>
+
 
   </div>
 
@@ -491,110 +739,66 @@
 
   <script>
     /******************************************************************
-     * ARCHIVE (index.html is always "today")
-     * Add yesterday’s file here after you rename it to MMDDYY.html
-     ******************************************************************/
-    // NEWEST FIRST
-    const PUZZLE_ARCHIVE_FILES = [
-          "010726.html",
-          "010826.html",
-          "011226.html",
-    ];
-
-    let archiveExpanded = false;
-
-    function parseMMDDYYFilename(filename){
-      const m = filename.match(/^(\d{2})(\d{2})(\d{2})\.html$/);
-      if (!m) return null;
-
-      const mm = Number(m[1]);
-      const dd = Number(m[2]);
-      const yy = Number(m[3]);
-
-      // 00–69 => 2000–2069, 70–99 => 1970–1999
-      const fullYear = (yy <= 69) ? 2000 + yy : 1900 + yy;
-      return { mm, dd, yyyy: fullYear };
-    }
-
-    function formatDateLabel(parts){
-      if (!parts) return "Unknown date";
-      const d = new Date(parts.yyyy, parts.mm - 1, parts.dd);
-      return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
-    }
-
-    function renderArchive(){
-      const listEl = document.getElementById("archiveList");
-      const toggleBtn = document.getElementById("toggleArchive");
-      if (!listEl || !toggleBtn) return;
-
-      listEl.innerHTML = "";
-
-      const filesToShow = archiveExpanded
-        ? PUZZLE_ARCHIVE_FILES
-        : PUZZLE_ARCHIVE_FILES.slice(0, 5);
-
-      filesToShow.forEach(file => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = `./${file}`; // assumes same folder as index.html
-        a.textContent = formatDateLabel(parseMMDDYYFilename(file));
-        li.appendChild(a);
-        listEl.appendChild(li);
-      });
-
-      if (PUZZLE_ARCHIVE_FILES.length <= 5) {
-        toggleBtn.style.display = "none";
-      } else {
-        toggleBtn.style.display = "";
-        toggleBtn.textContent = archiveExpanded ? "Show less" : "Show all";
-      }
-
-      if (PUZZLE_ARCHIVE_FILES.length === 0) {
-        const li = document.createElement("li");
-        li.style.color = "var(--muted)";
-        li.style.fontWeight = "700";
-        li.textContent = "No past puzzles yet.";
-        listEl.appendChild(li);
-      }
-    }
-
-    document.getElementById("toggleArchive")?.addEventListener("click", () => {
-      archiveExpanded = !archiveExpanded;
-      renderArchive();
-    });
-
-    /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
-	const GROUPS = [
-      { groupId: "airplane", movieTitle: "Airplane!", difficulty: 1, posterImg: "..images/posters/airplane.jpg" },
-      { groupId: "the_terminator", movieTitle: "The Terminator", difficulty: 2, posterImg: "..images/posters/terminator_1984_german_original_film_art_5000x.webp" },
-      { groupId: "stand_by_me", movieTitle: "Stand By Me", difficulty: 3, posterImg: "..images/posters/standbyme.webp" },
-      { groupId: "twilight_zone_the_movie", movieTitle: "Twilight Zone: The Movie", difficulty: 4, posterImg: "..images/posters/twilightzone.jpg" },
+   const GROUPS = [
+      { groupId: "airplane", movieTitle: "Airplane!", difficulty: 1, posterImg: "../images/posters/airplane.jpg" },
+      { groupId: "the_terminator", movieTitle: "The Terminator", difficulty: 2, posterImg: "../images/posters/terminator_1984_german_original_film_art_5000x.webp" },
+      { groupId: "stand_by_me", movieTitle: "Stand By Me", difficulty: 3, posterImg: "../images/posters/standbyme.webp" },
+      { groupId: "twilight_zone_the_movie", movieTitle: "Twilight Zone: The Movie", difficulty: 4, posterImg: "../images/posters/twilightzone.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Cusak", img:"..images/actors/cusak.jpg", groupId:"stand_by_me" },
-      { id:"a2", name:"Kiefer Sutherland", img:"..images/actors/sutherland.webp", groupId:"stand_by_me" },
-      { id:"a3", name:"Richard Dreyfuss", img:"..images/actors/dreyfuss.jpg", groupId:"stand_by_me" },
-      { id:"a4", name:"River Phoenix", img:"..images/actors/phoenix.webp", groupId:"stand_by_me" },
+      { id:"a1", name:"John Cusak", img:"../images/actors/cusak.jpg", groupId:"stand_by_me" },
+      { id:"a2", name:"Kiefer Sutherland", img:"../images/actors/sutherland.webp", groupId:"stand_by_me" },
+      { id:"a3", name:"Richard Dreyfuss", img:"../images/actors/dreyfuss.jpg", groupId:"stand_by_me" },
+      { id:"a4", name:"River Phoenix", img:"../images/actors/phoenix.webp", groupId:"stand_by_me" },
 
-      { id:"b1", name:"Peter Graves", img:"..images/actors/graves.jpg", groupId:"airplane" },
-      { id:"b2", name:"Kareem Abdul Jabar", img:"..images/actors/abduljabar.webp", groupId:"airplane" },
-      { id:"b3", name:"Leslie Nielsen", img:"..images/actors/nielsen.jpg", groupId:"airplane" },
-      { id:"b4", name:"Lloyd Bridges", img:"..images/actors/bridgeslloyd.jpeg", groupId:"airplane" },
+      { id:"b1", name:"Peter Graves", img:"../images/actors/graves.jpg", groupId:"airplane" },
+      { id:"b2", name:"Kareem Abdul Jabar", img:"../images/actors/abduljabar.webp", groupId:"airplane" },
+      { id:"b3", name:"Leslie Nielsen", img:"../images/actors/nielsen.jpg", groupId:"airplane" },
+      { id:"b4", name:"Lloyd Bridges", img:"../images/actors/bridgeslloyd.jpeg", groupId:"airplane" },
 
-      { id:"c1", name:"Burgess Meredith", img:"..images/actors/meredith.jpeg", groupId:"twilight_zone_the_movie" },
-      { id:"c2", name:"John Lithgow", img:"..images/actors/lithgow.jpg", groupId:"twilight_zone_the_movie" },
-      { id:"c3", name:"Dan Aykroyd", img:"..images/actors/aykroyd.webp", groupId:"twilight_zone_the_movie" },
-      { id:"c4", name:"Albert Brooks", img:"..images/actors/brooks.jpg", groupId:"twilight_zone_the_movie" },
+      { id:"c1", name:"Burgess Meredith", img:"../images/actors/meredith.jpeg", groupId:"twilight_zone_the_movie" },
+      { id:"c2", name:"John Lithgow", img:"../images/actors/lithgow.jpg", groupId:"twilight_zone_the_movie" },
+      { id:"c3", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"twilight_zone_the_movie" },
+      { id:"c4", name:"Albert Brooks", img:"../images/actors/brooks.jpg", groupId:"twilight_zone_the_movie" },
 
-      { id:"d1", name:"Dick Miller", img:"..images/actors/miller.webp", groupId:"the_terminator" },
-      { id:"d2", name:"Bill Paxton", img:"..images/actors/paxton.jpg", groupId:"the_terminator" },
-      { id:"d3", name:"Lance Henriksen", img:"..images/actors/henriksen.webp", groupId:"the_terminator" },
-      { id:"d4", name:"Michael Biehn", img:"..images/actors/biehn.jpg", groupId:"the_terminator" },
+      { id:"d1", name:"Dick Miller", img:"../images/actors/miller.webp", groupId:"the_terminator" },
+      { id:"d2", name:"Bill Paxton", img:"../images/actors/paxton.jpg", groupId:"the_terminator" },
+      { id:"d3", name:"Lance Henriksen", img:"../images/actors/henriksen.webp", groupId:"the_terminator" },
+      { id:"d4", name:"Michael Biehn", img:"../images/actors/biehn.jpg", groupId:"the_terminator" },
     ];
+
+
+    /******************************************************************
+     * ARCHIVE BUTTONS
+     * Put past puzzle files in: archives/1.html, archives/2.html, etc.
+     * Then update TOTAL_ARCHIVED_PUZZLES to match the highest number.
+     ******************************************************************/
+    const TOTAL_ARCHIVED_PUZZLES = 1;
+
+    function renderArchiveButtons(){
+      const archiveEl = document.getElementById("archiveButtons");
+      if (!archiveEl) return;
+
+      archiveEl.innerHTML = "";
+
+      if (TOTAL_ARCHIVED_PUZZLES <= 0) {
+        archiveEl.innerHTML = '<span class="archive-note">No archived puzzles yet.</span>';
+        return;
+      }
+
+      for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
+        const a = document.createElement("a");
+        a.href = `./archives/${i}.html`;
+        a.textContent = i;
+        a.setAttribute("aria-label", `Play archived puzzle ${i}`);
+        archiveEl.appendChild(a);
+      }
+    }
+
     /******************************************************************
      * GAME ENGINE
      ******************************************************************/
@@ -607,6 +811,32 @@
     const btnDeselect = document.getElementById("btnDeselect");
     const btnSubmit = document.getElementById("btnSubmit");
     const btnReset = document.getElementById("btnReset");
+
+    // Mobile-only: move Submit into the puzzle frame next to "Mistakes left"
+    const mobileMq = window.matchMedia("(max-width: 520px)");
+    function placeSubmitButton(){
+      const actions = document.getElementById("statusActions");
+      if (!actions) return;
+      if (mobileMq.matches){
+        if (btnSubmit && btnSubmit.parentElement !== actions){
+          actions.appendChild(btnSubmit);
+          btnSubmit.classList.add("inFrame");
+          btnSubmit.style.display = ""; // ensure visible after moving
+        }
+      }else{
+        // If the user rotates back to desktop width, put Submit back with the other controls
+        const controls = document.querySelector(".controls-under-sub");
+        if (controls && btnSubmit && btnSubmit.parentElement !== controls){
+          controls.appendChild(btnSubmit);
+          btnSubmit.classList.remove("inFrame");
+          btnSubmit.style.display = "";
+        }
+      }
+    }
+    placeSubmitButton();
+    if (mobileMq.addEventListener) mobileMq.addEventListener("change", placeSubmitButton);
+    else if (mobileMq.addListener) mobileMq.addListener(placeSubmitButton);
+
 
     const boardEl = document.getElementById("board");
     const posterPop = document.getElementById("posterPop");
@@ -626,7 +856,7 @@
     let lockInput = false;
 
     // Tweak reveal speed here:
-    const REVEAL_DELAY_MS = 900; // set higher to reveal slower
+    const REVEAL_DELAY_MS = 3000; // set higher to reveal slower
 
     // ---- Sound (no external files needed) ----
     // GitHub Pages (and Safari) can keep WebAudio "suspended" unless it is resumed
@@ -654,7 +884,7 @@
         try { ctx.resume(); } catch(e) {}
       }
 
-      // tiny silent blip to fully unlock on iOS/Safari
+      // tiny silent blip to fully unlock on iOS/Safari (WebAudio)
       try{
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
@@ -664,6 +894,31 @@
         const t = ctx.currentTime;
         osc.start(t);
         osc.stop(t + 0.01);
+      } catch(e) {}
+
+      // Also unlock <audio> elements (Safari can be picky). Do this ONLY during a user gesture.
+      try{
+        document.querySelectorAll("audio").forEach(a => {
+          if (!a || a.dataset._unlocked === "1") return;
+          const prevVol = a.volume;
+          a.volume = 0;
+          const p = a.play();
+          // Some browsers return undefined instead of a Promise.
+          if (p && typeof p.then === "function") {
+            p.then(() => {
+              try{ a.pause(); a.currentTime = 0; }catch(e){}
+              a.volume = prevVol;
+              a.dataset._unlocked = "1";
+            }).catch(() => {
+              a.volume = prevVol;
+              a.dataset._unlocked = "1";
+            });
+          } else {
+            try{ a.pause(); a.currentTime = 0; }catch(e){}
+            a.volume = prevVol;
+            a.dataset._unlocked = "1";
+          }
+        });
       } catch(e) {}
     }
 
@@ -720,6 +975,61 @@
       });
     }
 
+
+    // ---- TILE FLIP SFX (pool to avoid cutting off overlapping plays) ----
+    function playTileFlipSfx(){
+      const base = document.getElementById("tileFlipSound");
+      if (!base) return;
+
+      // Prime HTMLAudio as well (needed on some Safari builds)
+      primeAudio();
+
+      // Determine the actual playable src (prefer currentSrc once loaded)
+      const src = base.currentSrc || base.querySelector("source")?.src || base.src;
+      if (!src) return;
+
+      if (!playTileFlipSfx._pool){
+        playTileFlipSfx._pool = [];
+        playTileFlipSfx._poolHost = document.createElement("div");
+        playTileFlipSfx._poolHost.style.position = "absolute";
+        playTileFlipSfx._poolHost.style.width = "0";
+        playTileFlipSfx._poolHost.style.height = "0";
+        playTileFlipSfx._poolHost.style.overflow = "hidden";
+        playTileFlipSfx._poolHost.setAttribute("aria-hidden","true");
+        document.body.appendChild(playTileFlipSfx._poolHost);
+
+        // Start with a small pool; we can grow if everything is busy.
+        for (let k = 0; k < 8; k++){
+          const a = new Audio(src);
+          a.preload = "auto";
+          a.crossOrigin = "anonymous";
+          a.playsInline = true;
+          playTileFlipSfx._poolHost.appendChild(a);
+          playTileFlipSfx._pool.push(a);
+        }
+      }
+
+      const pool = playTileFlipSfx._pool;
+
+      // Prefer an element that's not currently playing so we never "steal" audio mid-sound.
+      let a = pool.find(x => x && (x.paused || x.ended));
+      if (!a){
+        // All busy: create a new one (rare, but makes playback deterministic).
+        a = new Audio(src);
+        a.preload = "auto";
+        a.crossOrigin = "anonymous";
+        a.playsInline = true;
+        playTileFlipSfx._poolHost.appendChild(a);
+        pool.push(a);
+      }
+
+      try{
+        a.currentTime = 0;
+        const p = a.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }catch(e){}
+    }
+
     function showOneAway(){
       oneAwayPopupEl.classList.add("show");
       clearTimeout(showOneAway._t);
@@ -760,6 +1070,62 @@
       });
     }
 
+    // ---- WIN SFX (play after other SFX finish) ----
+    function waitForAudioToEnd(audioEl, timeoutMs = 4000){
+      return new Promise((resolve) => {
+        if (!audioEl) return resolve();
+        // If not currently playing, resolve immediately.
+        if (audioEl.paused || audioEl.ended) return resolve();
+
+        let done = false;
+        const finish = () => {
+          if (done) return;
+          done = true;
+          audioEl.removeEventListener("ended", finish);
+          audioEl.removeEventListener("pause", finish);
+          resolve();
+        };
+
+        audioEl.addEventListener("ended", finish, { once:true });
+        // Some browsers may pause without firing ended (eg. tab switch); treat pause as completion for sequencing.
+        audioEl.addEventListener("pause", finish, { once:true });
+
+        // Safety timeout so a stuck audio doesn't block forever.
+        setTimeout(finish, timeoutMs);
+      });
+    }
+
+    function playWinSfx(){
+      const win = document.getElementById("winSound");
+      if (!win) return;
+
+      // Wait for any HTMLAudio-based SFX (tile flips, thud, etc.) to finish first.
+      // (AudioContext bleeps/whooshes are very short and will be done by the time this runs.)
+      const audios = [...document.querySelectorAll("audio")]
+        .filter(a => a && a.id !== "winSound");
+
+      Promise.all(audios.map(a => waitForAudioToEnd(a)))
+        .then(() => {
+          try{
+            win.currentTime = 0;
+            win.play().catch(() => {});
+          }catch(e){}
+        });
+    }
+
+    // ---- SOLVED TOAST ----
+    function showSolvedToast(){
+      const toast = document.getElementById("solvedToast");
+      if (!toast) return;
+      toast.classList.add("show");
+      toast.setAttribute("aria-hidden","false");
+      clearTimeout(showSolvedToast._t);
+      showSolvedToast._t = setTimeout(() => {
+        toast.classList.remove("show");
+        toast.setAttribute("aria-hidden","true");
+      }, 2600);
+    }
+
     function init(){
       if (TILES.length !== 16) console.warn("You should have exactly 16 tiles. Currently:", TILES.length);
 
@@ -773,10 +1139,10 @@
       hidePosterPop(true);
       renderAll();
 
-      setMsg("Select <strong>4</strong> actors who were in the same movie.");
+      setMsg("Select <strong>4</strong> actors who were in the same movie. Solve 4 groups");
       updateAttempts();
+      renderArchiveButtons();
 
-      renderArchive();
     }
 
     function setMsg(html){ msgEl.innerHTML = html; }
@@ -820,6 +1186,15 @@
       });
     }
 
+    function triggerScreenShake(){
+      document.body.classList.remove("shake");
+      // Force reflow so the animation can retrigger rapidly
+      void document.body.offsetWidth;
+      document.body.classList.add("shake");
+      setTimeout(() => document.body.classList.remove("shake"), 220);
+    }
+
+
     function renderGrid(){
       gridEl.innerHTML = "";
 
@@ -831,6 +1206,13 @@
 
         if (selected.has(t.id)) tile.classList.add("selected");
 
+        
+        const inner = document.createElement("div");
+        inner.className = "tile-inner";
+
+        const front = document.createElement("div");
+        front.className = "tile-face tile-front";
+
         const img = document.createElement("img");
         img.src = t.img;
         img.alt = t.name;
@@ -839,10 +1221,16 @@
         name.className = "nameOverlay";
         name.textContent = t.name;
 
-        tile.appendChild(img);
-        tile.appendChild(name);
+        front.appendChild(img);
+        front.appendChild(name);
 
-        tile.addEventListener("click", () => onTileClick(t.id));
+        const back = document.createElement("div");
+        back.className = "tile-face tile-back";
+
+        inner.appendChild(front);
+        inner.appendChild(back);
+        tile.appendChild(inner);
+tile.addEventListener("click", () => onTileClick(t.id));
 
         tile.addEventListener("touchstart", () => {
           tile.classList.add("showName");
@@ -918,6 +1306,7 @@
         lockInput = true;
         shakeSelectedTiles();
 
+        triggerScreenShake();
         if (attemptsLeft <= 0) {
           setTimeout(() => {
             selected.clear();
@@ -937,6 +1326,85 @@
         }, 360);
       }
     }
+
+
+    function assignPosterQuadrants(tileEls, posterUrl){
+      const positions = [
+        "0% 0%",     // top-left
+        "100% 0%",   // top-right
+        "0% 100%",   // bottom-left
+        "100% 100%"  // bottom-right
+      ];
+
+      tileEls.forEach((tile, i) => {
+        const back = tile.querySelector(".tile-back");
+        if (!back) return;
+        back.style.backgroundImage = `url(${posterUrl})`;
+        back.style.backgroundPosition = positions[i] || "0% 0%";
+      });
+    }
+
+    function mergeTilesIntoPoster(tileEls, posterUrl){
+      // Freeze tiles as fixed-position elements at their current positions
+      const rects = tileEls.map(t => t.getBoundingClientRect());
+      if (!rects.length) return;
+
+      const minX = Math.min(...rects.map(r => r.left));
+      const minY = Math.min(...rects.map(r => r.top));
+      const tileW = rects[0].width;
+      const tileH = rects[0].height;
+
+      tileEls.forEach((tile, idx) => {
+        const r = rects[idx];
+        tile.style.position = "fixed";
+        tile.style.left = r.left + "px";
+        tile.style.top = r.top + "px";
+        tile.style.width = r.width + "px";
+        tile.style.height = r.height + "px";
+        tile.style.margin = "0";
+        tile.style.zIndex = 999;
+      });
+
+      // Animate them into a 2x2 block
+      requestAnimationFrame(() => {
+        tileEls.forEach((tile, idx) => {
+          tile.style.transition = "left 0.9s cubic-bezier(.2,.9,.2,1), top 0.9s cubic-bezier(.2,.9,.2,1)";
+          const col = idx % 2;
+          const row = Math.floor(idx / 2);
+          tile.style.left = (minX + col * tileW) + "px";
+          tile.style.top = (minY + row * tileH) + "px";
+        });
+      });
+
+      // Replace with the full poster
+      setTimeout(() => {
+        const poster = document.createElement("img");
+        poster.src = posterUrl;
+        poster.alt = "Solved poster";
+        poster.style.position = "fixed";
+        poster.style.left = minX + "px";
+        poster.style.top = minY + "px";
+        poster.style.width = (tileW * 2) + "px";
+        poster.style.height = (tileH * 2) + "px";
+        poster.style.borderRadius = "16px";
+        poster.style.boxShadow = "0 30px 80px rgba(0,0,0,.5)";
+        poster.style.zIndex = 1000;
+        poster.style.opacity = "0";
+        poster.style.transition = "opacity 0.25s ease";
+
+        document.body.appendChild(poster);
+        requestAnimationFrame(() => poster.style.opacity = "1");
+
+        
+        // Auto-dismiss the constructed poster after 3 seconds so it doesn't cover playable tiles
+        setTimeout(() => {
+          poster.style.opacity = "0";
+          setTimeout(() => poster.remove(), 300);
+        }, 3000);
+tileEls.forEach(t => t.remove());
+      }, 1000);
+    }
+
 
     function solveGroup(groupId, chosenTiles, playSfx){
       const g = groupById.get(groupId);
@@ -960,25 +1428,45 @@
         memberNames: chosenTiles.map(t => t.name)
       });
 
-      const selectedIds = new Set(chosenTiles.map(t => t.id));
-      tiles = tiles.filter(t => !selectedIds.has(t.id));
+            const selectedIds = new Set(chosenTiles.map(t => String(t.id)));
+
+      // Stone 3D flip + poster merge (on correct guess)
+      const tileEls = [...gridEl.querySelectorAll(".tile")]
+        .filter(el => selectedIds.has(String(el.dataset.id)));
+
+      assignPosterQuadrants(tileEls, g.posterImg);
+      
+      const flipSound = document.getElementById("tileFlipSound");
+      tileEls.forEach((el, i) => {
+        el.classList.add("stone");
+        setTimeout(() => {
+                    playTileFlipSfx();
+el.classList.add("flipped");
+        }, i * 300);
+      });
+
+      setTimeout(() => mergeTilesIntoPoster(tileEls, g.posterImg), 3600);
       selected.clear();
 
-      animateReorder(() => renderAll());
+      setTimeout(() => {
+        tiles = tiles.filter(t => !selectedIds.has(String(t.id)));
+      }, 4600);
 
-      if (selectionRect) showPosterAtRect(g, selectionRect);
-
+      setTimeout(() => {
+        animateReorder(() => renderAll());
+      }, 4700);
       setMsg(`Correct: <strong>${g.movieTitle}</strong>`);
 
       setTimeout(() => {
         lockInput = false;
         renderGrid();
-
         if (solvedGroups.size === 4) {
           setMsg("🎉 You solved them all!");
+          showSolvedToast();
+          playWinSfx();
           btnSubmit.disabled = true;
         }
-      }, 520);
+      }, 4950);
     }
 
     function revealAnswersAnimated(){
@@ -1157,21 +1645,33 @@
 
       // Reset to measure natural sizes (no scaling)
       boardScale.style.setProperty("--boardScale", 1);
+      boardScale.style.marginBottom = "0px";
 
       // Measure after reset
-      const boardH = boardScale.getBoundingClientRect().height;
-      const totalH = wrap.getBoundingClientRect().height;
-      const otherH = totalH - boardH;
+      const rect = boardScale.getBoundingClientRect();
+      const boardH = rect.height;
+      const boardW = rect.width;
 
-      // Available vertical space for the board portion
-      const availableForBoard = window.innerHeight - otherH - 8;
+      // How much space is actually available for the board *from where it sits on screen*
+      // (This avoids counting the archive content below the board, which would otherwise
+      // incorrectly force the board to shrink on mobile.)
+      const boardTop = rect.top;
+      const availableH = window.innerHeight - boardTop - 12;
+
+      // Available width inside the page wrap
+      const wrapW = wrap.getBoundingClientRect().width;
+      const availableW = wrapW;
 
       let s = 1;
-      if (availableForBoard > 0 && boardH > 0) {
-        s = Math.min(1, availableForBoard / boardH);
-      }
-      // Don't crush it too small
-      s = Math.max(0.75, s);
+
+      const candidates = [];
+      if (availableH > 0 && boardH > 0) candidates.push(availableH / boardH);
+      if (availableW > 0 && boardW > 0) candidates.push(availableW / boardW);
+      if (candidates.length) s = Math.min(1, ...candidates);
+
+      // Don’t crush it too small (mobile gets a higher floor so tiles stay readable)
+      const minScale = (window.innerWidth <= 520) ? 0.92 : 0.75;
+      s = Math.max(minScale, s);
 
       boardScale.style.setProperty("--boardScale", s.toFixed(3));
 
@@ -1190,5 +1690,21 @@
     init();
     setTimeout(applyBoardScale, 0);
   </script>
+
+  <!-- Stone tile flip sound -->
+  <audio id="tileFlipSound" preload="auto">
+    <source src="../tile-flip.mp3" type="audio/mpeg">
+  </audio>
+    <audio id="winSound" src="../deadpool.mp3" preload="auto"></audio>
+
+
+  <!-- SOLVED TOAST -->
+  <div id="solvedToast" class="solved-toast" aria-hidden="true">
+    <div class="solved-toast-inner">
+      <div class="solved-toast-title">PUZZLE SOLVED</div>
+      <div class="solved-toast-sub">Nice work 🎉</div>
+    </div>
+  </div>
+
 </body>
 </html>
