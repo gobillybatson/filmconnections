@@ -698,15 +698,34 @@
 
 
 /* Brand title + puzzle subtitle layout */
+.title-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
 
+.main-title{
+  margin:0;
+  font-size:42px;
+  font-weight:900;
+  letter-spacing:0.5px;
+}
 
-
-
-
+.puzzle-subtitle{
+  margin-top:6px;
+  font-size:24px;
+  font-weight:900;
+  color:#6b7280;
+}
 
 @media (max-width: 520px){
-  
-  
+  .main-title{
+    font-size:28px;
+    letter-spacing:0.3px;
+  }
+  .puzzle-subtitle{
+    font-size:18px;
+  }
 }
 </style>
 </head>
@@ -718,7 +737,7 @@
 <a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
 <img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
 </a>
-<span class="title-theme">80's favorites</span>
+<div class="title-text"><h1 class="main-title">Film Connections</h1><div class="puzzle-subtitle">80's favorites</div></div>
 </div>
 <p class="sub">This one is kinda hard</p>
 <div class="controls controls-under-sub">
@@ -742,9 +761,9 @@
 <div class="grid" id="grid"></div>
 <!-- poster popover injected here -->
 <div aria-hidden="true" class="posterPop" id="posterPop">
-<img alt="Movie poster" id="posterPopImg"/>
+<img alt="Movie poster" id="posterPopImg">
 <div class="posterCaption" id="posterPopCap"></div>
-</div>
+</img></div>
 </div>
 </div>
 <section aria-label="Past puzzles" class="archive">
