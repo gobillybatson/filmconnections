@@ -754,6 +754,7 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
+<script src="../archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
@@ -791,32 +792,31 @@
 
     /******************************************************************
      * ARCHIVE BUTTONS
-     * Put past puzzle files in: archives/1.html, archives/2.html, etc.
-     * Then update TOTAL_ARCHIVED_PUZZLES to match the highest number.
+     * Uses archive-data.js so old files do not need updates when adding a puzzle.
      ******************************************************************/
-    const TOTAL_ARCHIVED_PUZZLES = 4;
-
     function renderArchiveButtons(){
       const archiveEl = document.getElementById("archiveButtons");
       if (!archiveEl) return;
 
       archiveEl.innerHTML = "";
 
-      if (TOTAL_ARCHIVED_PUZZLES <= 0) {
+      if (!Array.isArray(ARCHIVES) || ARCHIVES.length === 0) {
         archiveEl.innerHTML = '<span class="archive-note">No archived puzzles yet.</span>';
         return;
       }
 
       const currentArchiveNumber = 1;
 
-      for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
+      ARCHIVES.forEach((archiveNumber) => {
+        const i = Number(archiveNumber);
+
         if (i === currentArchiveNumber) {
           const span = document.createElement("span");
           span.className = "current-archive";
           span.textContent = i;
           span.setAttribute("aria-current", "page");
           archiveEl.appendChild(span);
-          continue;
+          return;
         }
 
         const a = document.createElement("a");
@@ -824,7 +824,7 @@
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
-      }
+      });
     }
 
     /******************************************************************
@@ -1730,7 +1730,5 @@ el.classList.add("flipped");
 <div class="solved-toast-sub">Nice work 🎉</div>
 </div>
 </div>
-
-<script src="../archive-data.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Play Film Connections, it's like Connections, but with actors, actresses and movies" name="description"/>
-<title>Film Connections: Movie Cast Puzzle - Comedies</title>
+<title>Film Connections: Movie Cast Puzzle - 1998</title>
 <style>
     :root{
       --bg:#f4f5f7;
@@ -422,20 +422,6 @@
     }
     .archive-buttons a:hover{ background:#2563eb; }
     .archive-buttons a:active{ transform: translateY(1px); }
-
-    .archive-buttons .current-archive{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:44px;
-      min-height:44px;
-      padding:10px 14px;
-      border-radius:12px;
-      background:#e5e7eb;
-      color:#111827;
-      font-weight:900;
-      border:1px solid #d1d5db;
-    }
     .archive-note{
       margin:8px 0 0;
       color:var(--muted);
@@ -695,6 +681,12 @@
   }
 }
 
+
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -702,12 +694,12 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
-<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="index.html">
+<img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
 </a>
-<span class="title-theme">Comedies</span>
+<span class="title-theme">1998</span>
 </div>
-<p class="sub">Another tough one....SNL fans will have fun with this one</p>
+<p class="sub">One of the best years for movies ever...and Steve Buscemi was in most of them!</p>
 <div class="controls controls-under-sub">
 <button id="btnShuffle" type="button">Shuffle</button>
 <button id="btnDeselect" type="button">Deselect All</button>
@@ -729,9 +721,9 @@
 <div class="grid" id="grid"></div>
 <!-- poster popover injected here -->
 <div aria-hidden="true" class="posterPop" id="posterPop">
-<img alt="Movie poster" id="posterPopImg">
+<img alt="Movie poster" id="posterPopImg"/>
 <div class="posterCaption" id="posterPopCap"></div>
-</img></div>
+</div>
 </div>
 </div>
 <section aria-label="Past puzzles" class="archive">
@@ -746,33 +738,33 @@
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "tommy_boy", movieTitle: "Tommy Boy", difficulty: 1, posterImg: "../images/posters/tommyboy.jpg" },
-      { groupId: "grown_ups", movieTitle: "Grown Ups", difficulty: 2, posterImg: "../images/posters/grownups.jpg" },
-      { groupId: "blues_brothers", movieTitle: "The Blues Brothers", difficulty: 3, posterImg: "../images/posters/bluesbrothers.jpg" },
-      { groupId: "coneheads", movieTitle: "Coneheads", difficulty: 4, posterImg: "../images/posters/coneheads.jpg" },
+      { groupId: "armageddon", movieTitle: "Armageddon", difficulty: 1, posterImg: "images/posters/armageddon.jpg" },
+      { groupId: "privateryan", movieTitle: "Saving Private Ryan", difficulty: 2, posterImg: "images/posters/savingprivateryan.jpg" },
+      { groupId: "biglebowski", movieTitle: "The Big Lebowski", difficulty: 3, posterImg: "images/posters/biglebowski.jpeg" },
+      { groupId: "weddingsinger", movieTitle: "The Wedding Singer", difficulty: 4, posterImg: "images/posters/weddingsinger.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Belushi", img:"../images/actors/belushi.jpg", groupId:"blues_brothers" },
-      { id:"a2", name:"Carrie Fisher", img:"../images/actors/fisher.jpg", groupId:"blues_brothers" },
-      { id:"a3", name:"Stephen Spielberg", img:"../images/actors/spielberg.jpg", groupId:"blues_brothers" },
-      { id:"a4", name:"John Candy", img:"../images/actors/candy.webp", groupId:"blues_brothers" },
+      { id:"a1", name:"Jeff Bridges", img:"./images/actors/bridges.jpg", groupId:"biglebowski" },
+      { id:"a2", name:"John Goodman", img:"./images/actors/goodman.jpg", groupId:"biglebowski" },
+      { id:"a3", name:"Julianne Moore", img:"./images/actors/moorejulianne.jpg", groupId:"biglebowski" },
+      { id:"a4", name:"Philip Seymore Hoffman", img:"./images/actors/hoffman.webp", groupId:"biglebowski" },
 
-      { id:"b1", name:"Chris Farley", img:"../images/actors/farley.jpg", groupId:"tommy_boy" },
-      { id:"b2", name:"David Spade", img:"../images/actors/spade.webp", groupId:"tommy_boy" },
-      { id:"b3", name:"Rob Lowe", img:"../images/actors/lowe.jpeg", groupId:"tommy_boy" },
-      { id:"b4", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"tommy_boy" },
+      { id:"b1", name:"Bruce Willis", img:"./images/actors/willis.jpg", groupId:"armageddon" },
+      { id:"b2", name:"Ben Affleck", img:"./images/actors/affleck.jpg", groupId:"armageddon" },
+      { id:"b3", name:"Owen Wilson", img:"./images/actors/wilson.jpg", groupId:"armageddon" },
+      { id:"b4", name:"Liv Tyler", img:"./images/actors/tyler.jpg", groupId:"armageddon" },
 
-      { id:"c1", name:"Jane Curtin", img:"../images/actors/curtin.jpeg", groupId:"coneheads" },
-      { id:"c2", name:"Phil Hartman", img:"../images/actors/hartman.webp", groupId:"coneheads" },
-      { id:"c3", name:"Michael McKean", img:"../images/actors/mckean.jpg", groupId:"coneheads" },
-      { id:"c4", name:"Jon Lovitz", img:"../images/actors/lovitz.webp", groupId:"coneheads" },
+      { id:"c1", name:"Adam Sandler", img:"./images/actors/sandler.avif", groupId:"weddingsinger" },
+      { id:"c2", name:"Drew Barrymore", img:"./images/actors/barrymore.webp", groupId:"weddingsinger" },
+      { id:"c3", name:"Billy Idol", img:"./images/actors/idol.jpg", groupId:"weddingsinger" },
+      { id:"c4", name:"Steve Buscemi", img:"./images/actors/buscemi.jpg", groupId:"weddingsinger" },
 
-      { id:"d1", name:"Adam Sandler", img:"../images/actors/sandler.avif", groupId:"grown_ups" },
-      { id:"d2", name:"Salma Hayek", img:"../images/actors/hayek.webp", groupId:"grown_ups" },
-      { id:"d3", name:"Chris Rock", img:"../images/actors/rockchris.jpg", groupId:"grown_ups" },
-      { id:"d4", name:"Kevin James", img:"../images/actors/james.webp", groupId:"grown_ups" },
+      { id:"d1", name:"Tom Hanks", img:"./images/actors/hanks.jpg", groupId:"privateryan" },
+      { id:"d2", name:"Matt Damon", img:"./images/actors/damon.jpg", groupId:"privateryan" },
+      { id:"d3", name:"Ted Danson", img:"./images/actors/danson.jpg.webp", groupId:"privateryan" },
+      { id:"d4", name:"Vin Diesel", img:"./images/actors/diesel.jpg", groupId:"privateryan" },
     ];
 
 
@@ -794,20 +786,9 @@
         return;
       }
 
-      const currentArchiveNumber = 2;
-
       for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
-        if (i === currentArchiveNumber) {
-          const span = document.createElement("span");
-          span.className = "current-archive";
-          span.textContent = i;
-          span.setAttribute("aria-current", "page");
-          archiveEl.appendChild(span);
-          continue;
-        }
-
         const a = document.createElement("a");
-        a.href = `${i}.html`;
+        a.href = `./archives/${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
@@ -1707,9 +1688,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="../tile-flip.mp3" type="audio/mpeg"/>
+<source src="./tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="./deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">
@@ -1717,7 +1698,5 @@ el.classList.add("flipped");
 <div class="solved-toast-sub">Nice work 🎉</div>
 </div>
 </div>
-
-<script src="../archive-data.js"></script>
 </body>
 </html>
