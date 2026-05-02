@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Play Film Connections, it's like Connections, but with actors, actresses and movies">
-  <title>Film Connections - 1998</title>
+  <title>Film Connections - Animated Favorites</title>
   <style>
     :root{
       --bg:#f4f5f7;
@@ -421,6 +421,20 @@
     }
     .archive-buttons a:hover{ background:#2563eb; }
     .archive-buttons a:active{ transform: translateY(1px); }
+
+    .archive-buttons .current-archive{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:44px;
+      min-height:44px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#e5e7eb;
+      color:#111827;
+      font-weight:900;
+      border:1px solid #d1d5db;
+    }
     .archive-note{
       margin:8px 0 0;
       color:var(--muted);
@@ -688,12 +702,12 @@
     <header>
       <div>
         <div class="title-row">
-          <a href="index.html" class="title-button title-image-link" aria-label="Go to today’s puzzle">
-            <img src="./images/film-connections-button.png" alt="Film Connections" class="title-image">
+          <a href="../index.html" class="title-button title-image-link" aria-label="Go to today’s puzzle">
+            <img src="../images/film-connections-button.png" alt="Film Connections" class="title-image">
           </a>
-          <span class="title-theme">1998</span>
+          <span class="title-theme">Animated Favorites</span>
         </div>
-        <p class="sub">One of the best years for movies ever...and Steve Buscemi was in most of them!</p>
+        <p class="sub">90's kids and their parents will have fun with this one</p>
 
         <div class="controls controls-under-sub">
           <button id="btnShuffle" type="button">Shuffle</button>
@@ -742,33 +756,33 @@
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "armageddon", movieTitle: "Armageddon", difficulty: 1, posterImg: "images/posters/armageddon.jpg" },
-      { groupId: "privateryan", movieTitle: "Saving Private Ryan", difficulty: 2, posterImg: "images/posters/savingprivateryan.jpg" },
-      { groupId: "biglebowski", movieTitle: "The Big Lebowski", difficulty: 3, posterImg: "images/posters/biglebowski.jpeg" },
-      { groupId: "weddingsinger", movieTitle: "The Wedding Singer", difficulty: 4, posterImg: "images/posters/weddingsinger.jpg" },
+      { groupId: "monsters_inc", movieTitle: "Monsters Inc", difficulty: 1, posterImg: "../images/posters/monsters.jpg" },
+      { groupId: "madagascar", movieTitle: "Madagascar", difficulty: 2, posterImg: "../images/posters/madagascar.jpg" },
+      { groupId: "shark_tale", movieTitle: "Shark Tale", difficulty: 3, posterImg: "../images/posters/sharktale.jpg" },
+      { groupId: "antz", movieTitle: "Antz", difficulty: 4, posterImg: "../images/posters/antz.webp" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Jeff Bridges", img:"./images/actors/bridges.jpg", groupId:"biglebowski" },
-      { id:"a2", name:"John Goodman", img:"./images/actors/goodman.jpg", groupId:"biglebowski" },
-      { id:"a3", name:"Julianne Moore", img:"./images/actors/moorejulianne.jpg", groupId:"biglebowski" },
-      { id:"a4", name:"Philip Seymore Hoffman", img:"./images/actors/hoffman.webp", groupId:"biglebowski" },
+      { id:"a1", name:"Will Smith", img:"../images/actors/smith.jpg", groupId:"shark_tale" },
+      { id:"a2", name:"Robert Deniro", img:"../images/actors/deniro.webp", groupId:"shark_tale" },
+      { id:"a3", name:"Rene Zellweger", img:"../images/actors/zellweger.jpg", groupId:"shark_tale" },
+      { id:"a4", name:"Jack Black", img:"../images/actors/black.avif", groupId:"shark_tale" },
 
-      { id:"b1", name:"Bruce Willis", img:"./images/actors/willis.jpg", groupId:"armageddon" },
-      { id:"b2", name:"Ben Affleck", img:"./images/actors/affleck.jpg", groupId:"armageddon" },
-      { id:"b3", name:"Owen Wilson", img:"./images/actors/wilson.jpg", groupId:"armageddon" },
-      { id:"b4", name:"Liv Tyler", img:"./images/actors/tyler.jpg", groupId:"armageddon" },
+      { id:"b1", name:"Billy Crystal", img:"../images/actors/crystal.jpg", groupId:"monsters_inc" },
+      { id:"b2", name:"John Goodman", img:"../images/actors/goodman.jpg", groupId:"monsters_inc" },
+      { id:"b3", name:"Steve Buscemi", img:"../images/actors/buscemi.jpg", groupId:"monsters_inc" },
+      { id:"b4", name:"Jennifer Tilly", img:"../images/actors/tilly.jpg", groupId:"monsters_inc" },
 
-      { id:"c1", name:"Adam Sandler", img:"./images/actors/sandler.avif", groupId:"weddingsinger" },
-      { id:"c2", name:"Drew Barrymore", img:"./images/actors/barrymore.webp", groupId:"weddingsinger" },
-      { id:"c3", name:"Billy Idol", img:"./images/actors/idol.jpg", groupId:"weddingsinger" },
-      { id:"c4", name:"Steve Buscemi", img:"./images/actors/buscemi.jpg", groupId:"weddingsinger" },
+      { id:"c1", name:"Woody Allen", img:"../images/actors/allen.jpg", groupId:"antz" },
+      { id:"c2", name:"Sylvester Stallone", img:"../images/actors/stallone.webp", groupId:"antz" },
+      { id:"c3", name:"Sharon Stone", img:"../images/actors/stone.jpg", groupId:"antz" },
+      { id:"c4", name:"Gene Hackman", img:"../images/actors/hackman.webp", groupId:"antz" },
 
-      { id:"d1", name:"Tom Hanks", img:"./images/actors/hanks.jpg", groupId:"privateryan" },
-      { id:"d2", name:"Matt Damon", img:"./images/actors/damon.jpg", groupId:"privateryan" },
-      { id:"d3", name:"Ted Danson", img:"./images/actors/danson.jpg.webp", groupId:"privateryan" },
-      { id:"d4", name:"Vin Diesel", img:"./images/actors/diesel.jpg", groupId:"privateryan" },
+      { id:"d1", name:"Ben Stiller", img:"../images/actors/stiller.jpg", groupId:"madagascar" },
+      { id:"d2", name:"David Schwimmer", img:"../images/actors/schwimmer.webp", groupId:"madagascar" },
+      { id:"d3", name:"Chris Rock", img:"../images/actors/rock.jpg", groupId:"madagascar" },
+      { id:"d4", name:"Jada Pinkett Smith", img:"../images/actors/pinkett.webp", groupId:"madagascar" },
     ];
 
 
@@ -790,9 +804,20 @@
         return;
       }
 
+      const currentArchiveNumber = 2;
+
       for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
+        if (i === currentArchiveNumber) {
+          const span = document.createElement("span");
+          span.className = "current-archive";
+          span.textContent = i;
+          span.setAttribute("aria-current", "page");
+          archiveEl.appendChild(span);
+          continue;
+        }
+
         const a = document.createElement("a");
-        a.href = `./archives/${i}.html`;
+        a.href = `${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
@@ -1693,9 +1718,9 @@ el.classList.add("flipped");
 
   <!-- Stone tile flip sound -->
   <audio id="tileFlipSound" preload="auto">
-    <source src="./tile-flip.mp3" type="audio/mpeg">
+    <source src="../tile-flip.mp3" type="audio/mpeg">
   </audio>
-    <audio id="winSound" src="./deadpool.mp3" preload="auto"></audio>
+    <audio id="winSound" src="../deadpool.mp3" preload="auto"></audio>
 
 
   <!-- SOLVED TOAST -->
