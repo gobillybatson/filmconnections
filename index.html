@@ -682,25 +682,11 @@
 }
 
 
-.title-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.05;
-}
 
-.main-title{
-  margin:0;
-  font-size:42px;
-  font-weight:900;
-  letter-spacing:0.5px;
-}
 
-.puzzle-subtitle{
-  margin-top:6px;
-  font-size:24px;
-  font-weight:900;
-  color:#6b7280;
-}
+
+
+
 </style>
 </head>
 <body>
@@ -711,7 +697,7 @@
 <a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="index.html">
 <img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
 </a>
-<div class="title-text"><h1 class="main-title">Film Connections</h1><div class="puzzle-subtitle">1998</div></div>
+<span class="title-theme">1998</span>
 </div>
 <p class="sub">One of the best years for movies ever...and Steve Buscemi was in most of them!</p>
 <div class="controls controls-under-sub">
@@ -735,9 +721,9 @@
 <div class="grid" id="grid"></div>
 <!-- poster popover injected here -->
 <div aria-hidden="true" class="posterPop" id="posterPop">
-<img alt="Movie poster" id="posterPopImg">
+<img alt="Movie poster" id="posterPopImg"/>
 <div class="posterCaption" id="posterPopCap"></div>
-</img></div>
+</div>
 </div>
 </div>
 <section aria-label="Past puzzles" class="archive">
