@@ -800,7 +800,14 @@
 
       archiveEl.innerHTML = "";
 
-      if (!Array.isArray(ARCHIVES) || ARCHIVES.length === 0) {
+      // Use archive-data.js when it loads correctly.
+      // If it fails to load, use a safe fallback so the buttons do not disappear.
+      const archiveList =
+        (typeof ARCHIVES !== "undefined" && Array.isArray(ARCHIVES))
+          ? ARCHIVES
+          : [1, 2, 3, 4, 5];
+
+      if (archiveList.length === 0) {
         archiveEl.innerHTML = '<span class="archive-note">No archived puzzles yet.</span>';
         return;
       }
@@ -808,7 +815,7 @@
       const match = window.location.pathname.match(/(\d+)\.html$/);
       const currentArchiveNumber = match ? Number(match[1]) : null;
 
-      ARCHIVES.forEach((archiveNumber) => {
+      archiveList.forEach((archiveNumber) => {
         const i = Number(archiveNumber);
 
         if (i === currentArchiveNumber) {
