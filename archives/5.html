@@ -796,7 +796,7 @@
       }
 
       const match = window.location.pathname.match(/(\d+)\.html$/);
-      const currentArchiveNumber = match ? parseInt(match[1]) : null;
+      const currentArchiveNumber = match ? Number(match[1]) : null;
 
       ARCHIVES.forEach((archiveNumber) => {
         const i = Number(archiveNumber);
