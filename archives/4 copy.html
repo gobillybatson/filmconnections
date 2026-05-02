@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Play Film Connections, it's like Connections, but with actors, actresses and movies" name="description"/>
-<title>Film Connections: Movie Cast Puzzle - Comedies</title>
+<title>Film Connections: Movie Cast Puzzle - Animated Favorites</title>
 <style>
     :root{
       --bg:#f4f5f7;
@@ -705,9 +705,9 @@
 <a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
 <img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
 </a>
-<span class="title-theme">Comedies</span>
+<span class="title-theme">Remakes</span>
 </div>
-<p class="sub">Another tough one....SNL fans will have fun with this one</p>
+<p class="sub">Some good...some bad...all remakes</p>
 <div class="controls controls-under-sub">
 <button id="btnShuffle" type="button">Shuffle</button>
 <button id="btnDeselect" type="button">Deselect All</button>
@@ -746,33 +746,33 @@
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "tommy_boy", movieTitle: "Tommy Boy", difficulty: 1, posterImg: "../images/posters/tommyboy.jpg" },
-      { groupId: "grown_ups", movieTitle: "Grown Ups", difficulty: 2, posterImg: "../images/posters/grownups.jpg" },
-      { groupId: "blues_brothers", movieTitle: "The Blues Brothers", difficulty: 3, posterImg: "../images/posters/bluesbrothers.jpg" },
-      { groupId: "coneheads", movieTitle: "Coneheads", difficulty: 4, posterImg: "../images/posters/coneheads.jpg" },
+      { groupId: "oceans_eleven", movieTitle: "Oceans 11", difficulty: 1, posterImg: "../images/posters/oceans.jpg" },
+      { groupId: "true_grit", movieTitle: "True Grit", difficulty: 2, posterImg: "../images/posters/grit.jpg" },
+      { groupId: "magnificent_seven", movieTitle: "The Magnificent Seven", difficulty: 3, posterImg: "../images/posters/seven.jpg" },
+      { groupId: "planet_of_the_aoes", movieTitle: "Planet of the Apes", difficulty: 4, posterImg: "../images/posters/apes.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Belushi", img:"../images/actors/belushi.jpg", groupId:"blues_brothers" },
-      { id:"a2", name:"Carrie Fisher", img:"../images/actors/fisher.jpg", groupId:"blues_brothers" },
-      { id:"a3", name:"Stephen Spielberg", img:"../images/actors/spielberg.jpg", groupId:"blues_brothers" },
-      { id:"a4", name:"John Candy", img:"../images/actors/candy.webp", groupId:"blues_brothers" },
+      { id:"a1", name:"Denzel Washington", img:"../images/actors/washington.webp", groupId:"magnificent_seven" },
+      { id:"a2", name:"Chris Pratt", img:"../images/actors/pratt.jpg", groupId:"magnificent_seven" },
+      { id:"a3", name:"Ethan Hawke", img:"../images/actors/hawke.webp", groupId:"magnificent_seven" },
+      { id:"a4", name:"Vincent D'Onofrio", img:"../images/actors/donofrio.jpg", groupId:"magnificent_seven" },
 
-      { id:"b1", name:"Chris Farley", img:"../images/actors/farley.jpg", groupId:"tommy_boy" },
-      { id:"b2", name:"David Spade", img:"../images/actors/spade.webp", groupId:"tommy_boy" },
-      { id:"b3", name:"Rob Lowe", img:"../images/actors/lowe.jpeg", groupId:"tommy_boy" },
-      { id:"b4", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"tommy_boy" },
+      { id:"b1", name:"George Clooney", img:"../images/actors/clooney.webp", groupId:"oceans_eleven" },
+      { id:"b2", name:"Brad Pitt", img:"../images/actors/pitt.jpg", groupId:"oceans_eleven" },
+      { id:"b3", name:"Julia Roberts", img:"../images/actors/roberts.webp", groupId:"oceans_eleven" },
+      { id:"b4", name:"Andy Garcia", img:"../images/actors/garcia.jpg", groupId:"oceans_eleven" },
 
-      { id:"c1", name:"Jane Curtin", img:"../images/actors/curtin.jpeg", groupId:"coneheads" },
-      { id:"c2", name:"Phil Hartman", img:"../images/actors/hartman.webp", groupId:"coneheads" },
-      { id:"c3", name:"Michael McKean", img:"../images/actors/mckean.jpg", groupId:"coneheads" },
-      { id:"c4", name:"Jon Lovitz", img:"../images/actors/lovitz.webp", groupId:"coneheads" },
+      { id:"c1", name:"Mark Wahlberg", img:"../images/actors/wahlberg.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c2", name:"Helena Bonham Carter", img:"../images/actors/carter.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c3", name:"Michael Clarke Duncan", img:"../images/actors/duncan.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c4", name:"Paul Giamatti", img:"../images/actors/giamatti.jpg", groupId:"planet_of_the_aoes" },
 
-      { id:"d1", name:"Adam Sandler", img:"../images/actors/sandler.avif", groupId:"grown_ups" },
-      { id:"d2", name:"Salma Hayek", img:"../images/actors/hayek.webp", groupId:"grown_ups" },
-      { id:"d3", name:"Chris Rock", img:"../images/actors/rockchris.jpg", groupId:"grown_ups" },
-      { id:"d4", name:"Kevin James", img:"../images/actors/james.webp", groupId:"grown_ups" },
+      { id:"d1", name:"Jeff Bridges", img:"../images/actors/bridgesjeff.jpg", groupId:"true_grit" },
+      { id:"d2", name:"Matt Damon", img:"../images/actors/damon.jpg", groupId:"true_grit" },
+      { id:"d3", name:"Hailee Steinfeld", img:"../images/actors/steinfeld.jpg", groupId:"true_grit" },
+      { id:"d4", name:"Barry Pepper", img:"../images/actors/pepper.webp", groupId:"true_grit" },
     ];
 
 
@@ -794,7 +794,7 @@
         return;
       }
 
-      const currentArchiveNumber = 2;
+      const currentArchiveNumber = 4;
 
       for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
         if (i === currentArchiveNumber) {
@@ -1717,7 +1717,5 @@ el.classList.add("flipped");
 <div class="solved-toast-sub">Nice work 🎉</div>
 </div>
 </div>
-
-<script src="../archive-data.js"></script>
 </body>
 </html>

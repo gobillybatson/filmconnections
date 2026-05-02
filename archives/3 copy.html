@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Play Film Connections, it's like Connections, but with actors, actresses and movies" name="description"/>
-<title>Film Connections: Movie Cast Puzzle - Comedies</title>
+<title>Film Connections: Movie Cast Puzzle - Animated Favorites</title>
 <style>
     :root{
       --bg:#f4f5f7;
@@ -705,9 +705,9 @@
 <a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
 <img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
 </a>
-<span class="title-theme">Comedies</span>
+<span class="title-theme">Animated Favorites</span>
 </div>
-<p class="sub">Another tough one....SNL fans will have fun with this one</p>
+<p class="sub">90's kids and their parents will have fun with this one</p>
 <div class="controls controls-under-sub">
 <button id="btnShuffle" type="button">Shuffle</button>
 <button id="btnDeselect" type="button">Deselect All</button>
@@ -746,33 +746,33 @@
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "tommy_boy", movieTitle: "Tommy Boy", difficulty: 1, posterImg: "../images/posters/tommyboy.jpg" },
-      { groupId: "grown_ups", movieTitle: "Grown Ups", difficulty: 2, posterImg: "../images/posters/grownups.jpg" },
-      { groupId: "blues_brothers", movieTitle: "The Blues Brothers", difficulty: 3, posterImg: "../images/posters/bluesbrothers.jpg" },
-      { groupId: "coneheads", movieTitle: "Coneheads", difficulty: 4, posterImg: "../images/posters/coneheads.jpg" },
+      { groupId: "monsters_inc", movieTitle: "Monsters Inc", difficulty: 1, posterImg: "../images/posters/monsters.jpg" },
+      { groupId: "madagascar", movieTitle: "Madagascar", difficulty: 2, posterImg: "../images/posters/madagascar.jpg" },
+      { groupId: "shark_tale", movieTitle: "Shark Tale", difficulty: 3, posterImg: "../images/posters/sharktale.jpg" },
+      { groupId: "antz", movieTitle: "Antz", difficulty: 4, posterImg: "../images/posters/antz.webp" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Belushi", img:"../images/actors/belushi.jpg", groupId:"blues_brothers" },
-      { id:"a2", name:"Carrie Fisher", img:"../images/actors/fisher.jpg", groupId:"blues_brothers" },
-      { id:"a3", name:"Stephen Spielberg", img:"../images/actors/spielberg.jpg", groupId:"blues_brothers" },
-      { id:"a4", name:"John Candy", img:"../images/actors/candy.webp", groupId:"blues_brothers" },
+      { id:"a1", name:"Will Smith", img:"../images/actors/smith.jpg", groupId:"shark_tale" },
+      { id:"a2", name:"Robert Deniro", img:"../images/actors/deniro.webp", groupId:"shark_tale" },
+      { id:"a3", name:"Rene Zellweger", img:"../images/actors/zellweger.jpg", groupId:"shark_tale" },
+      { id:"a4", name:"Jack Black", img:"../images/actors/black.avif", groupId:"shark_tale" },
 
-      { id:"b1", name:"Chris Farley", img:"../images/actors/farley.jpg", groupId:"tommy_boy" },
-      { id:"b2", name:"David Spade", img:"../images/actors/spade.webp", groupId:"tommy_boy" },
-      { id:"b3", name:"Rob Lowe", img:"../images/actors/lowe.jpeg", groupId:"tommy_boy" },
-      { id:"b4", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"tommy_boy" },
+      { id:"b1", name:"Billy Crystal", img:"../images/actors/crystal.jpg", groupId:"monsters_inc" },
+      { id:"b2", name:"John Goodman", img:"../images/actors/goodman.jpg", groupId:"monsters_inc" },
+      { id:"b3", name:"Steve Buscemi", img:"../images/actors/buscemi.jpg", groupId:"monsters_inc" },
+      { id:"b4", name:"Jennifer Tilly", img:"../images/actors/tilly.jpg", groupId:"monsters_inc" },
 
-      { id:"c1", name:"Jane Curtin", img:"../images/actors/curtin.jpeg", groupId:"coneheads" },
-      { id:"c2", name:"Phil Hartman", img:"../images/actors/hartman.webp", groupId:"coneheads" },
-      { id:"c3", name:"Michael McKean", img:"../images/actors/mckean.jpg", groupId:"coneheads" },
-      { id:"c4", name:"Jon Lovitz", img:"../images/actors/lovitz.webp", groupId:"coneheads" },
+      { id:"c1", name:"Woody Allen", img:"../images/actors/allen.jpg", groupId:"antz" },
+      { id:"c2", name:"Sylvester Stallone", img:"../images/actors/stallone.webp", groupId:"antz" },
+      { id:"c3", name:"Sharon Stone", img:"../images/actors/stone.jpg", groupId:"antz" },
+      { id:"c4", name:"Gene Hackman", img:"../images/actors/hackman.webp", groupId:"antz" },
 
-      { id:"d1", name:"Adam Sandler", img:"../images/actors/sandler.avif", groupId:"grown_ups" },
-      { id:"d2", name:"Salma Hayek", img:"../images/actors/hayek.webp", groupId:"grown_ups" },
-      { id:"d3", name:"Chris Rock", img:"../images/actors/rockchris.jpg", groupId:"grown_ups" },
-      { id:"d4", name:"Kevin James", img:"../images/actors/james.webp", groupId:"grown_ups" },
+      { id:"d1", name:"Ben Stiller", img:"../images/actors/stiller.jpg", groupId:"madagascar" },
+      { id:"d2", name:"David Schwimmer", img:"../images/actors/schwimmer.webp", groupId:"madagascar" },
+      { id:"d3", name:"Chris Rock", img:"../images/actors/rockchris.jpg", groupId:"madagascar" },
+      { id:"d4", name:"Jada Pinkett Smith", img:"../images/actors/pinkett.webp", groupId:"madagascar" },
     ];
 
 
@@ -794,7 +794,7 @@
         return;
       }
 
-      const currentArchiveNumber = 2;
+      const currentArchiveNumber = 3;
 
       for (let i = 1; i <= TOTAL_ARCHIVED_PUZZLES; i++) {
         if (i === currentArchiveNumber) {
@@ -1717,7 +1717,5 @@ el.classList.add("flipped");
 <div class="solved-toast-sub">Nice work 🎉</div>
 </div>
 </div>
-
-<script src="../archive-data.js"></script>
 </body>
 </html>
