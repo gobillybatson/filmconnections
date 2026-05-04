@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Play Film Connections, it's like Connections, but with actors, actresses and movies" name="description"/>
-<title>Film Connections: Movie Cast Puzzle - Baseball Movies</title>
+<title>Film Connections: Movie Cast Puzzle - 1998</title>
 <style>
     :root{
       --bg:#f4f5f7;
@@ -422,20 +422,6 @@
     }
     .archive-buttons a:hover{ background:#2563eb; }
     .archive-buttons a:active{ transform: translateY(1px); }
-
-    .archive-buttons .current-archive{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:44px;
-      min-height:44px;
-      padding:10px 14px;
-      border-radius:12px;
-      background:#e5e7eb;
-      color:#111827;
-      font-weight:900;
-      border:1px solid #d1d5db;
-    }
     .archive-note{
       margin:8px 0 0;
       color:var(--muted);
@@ -695,6 +681,12 @@
   }
 }
 
+
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -702,12 +694,12 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
-<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="index.html">
+<img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
 </a>
-<span class="title-theme">Baseball Movies</span>
+<span class="title-theme">1998</span>
 </div>
-<p class="sub">The greatest genre of sports movies, question.</p>
+<p class="sub">One of the best years for movies ever...and Steve Buscemi was in most of them!</p>
 <div class="controls controls-under-sub">
 <button id="btnShuffle" type="button">Shuffle</button>
 <button id="btnDeselect" type="button">Deselect All</button>
@@ -729,9 +721,9 @@
 <div class="grid" id="grid"></div>
 <!-- poster popover injected here -->
 <div aria-hidden="true" class="posterPop" id="posterPop">
-<img alt="Movie poster" id="posterPopImg">
+<img alt="Movie poster" id="posterPopImg"/>
 <div class="posterCaption" id="posterPopCap"></div>
-</img></div>
+</div>
 </div>
 </div>
 <section aria-label="Past puzzles" class="archive">
@@ -741,42 +733,39 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
-<script src="../archive-data.js"></script>
+<script src="archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
-    
-
-    // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const GROUPS = [
-      { groupId: "leagueoftheirown", movieTitle: "League of Their Own", difficulty: 1, posterImg: "../images/posters/leagueoftheirown.jpeg" },
-      { groupId: "fieldofdreams", movieTitle: "Field of Dreams", difficulty: 2, posterImg: "../images/posters/fieldofdreams.jpg" },
-      { groupId: "majorleague", movieTitle: "Major League", difficulty: 3, posterImg: "../images/posters/major league.jpg" },
-      { groupId: "thenatural", movieTitle: "The Natural", difficulty: 4, posterImg: "../images/posters/natural.webp" },
+      { groupId: "armageddon", movieTitle: "Armageddon", difficulty: 1, posterImg: "images/posters/armageddon.jpg" },
+      { groupId: "privateryan", movieTitle: "Saving Private Ryan", difficulty: 2, posterImg: "images/posters/savingprivateryan.jpg" },
+      { groupId: "biglebowski", movieTitle: "The Big Lebowski", difficulty: 3, posterImg: "images/posters/biglebowski.jpeg" },
+      { groupId: "weddingsinger", movieTitle: "The Wedding Singer", difficulty: 4, posterImg: "images/posters/weddingsinger.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Charlie Sheen", img:"../images/actors/sheen.avif", groupId:"majorleague" },
-      { id:"a2", name:"Wesley Snipes", img:"../images/actors/snipes.webp", groupId:"majorleague" },
-      { id:"a3", name:"Tom Berenger", img:"../images/actors/berenger.jpg", groupId:"majorleague" },
-      { id:"a4", name:"Bob Ueker", img:"../images/actors/ueker.jpg", groupId:"majorleague" },
+      { id:"a1", name:"Jeff Bridges", img:"./images/actors/bridges.jpg", groupId:"biglebowski" },
+      { id:"a2", name:"John Goodman", img:"./images/actors/goodman.jpg", groupId:"biglebowski" },
+      { id:"a3", name:"Julianne Moore", img:"./images/actors/moorejulianne.jpg", groupId:"biglebowski" },
+      { id:"a4", name:"Philip Seymore Hoffman", img:"./images/actors/hoffman.webp", groupId:"biglebowski" },
 
-      { id:"b1", name:"Geena Davis", img:"../images/actors/davis.webp", groupId:"leagueoftheirown" },
-      { id:"b2", name:"Madonna", img:"../images/actors/madonna.jpg", groupId:"leagueoftheirown" },
-      { id:"b3", name:"Rosie O'Donnell", img:"../images/actors/odonnell.jpg", groupId:"leagueoftheirown" },
-      { id:"b4", name:"Tom Hanks", img:"../images/actors/hanks.jpg", groupId:"leagueoftheirown" },
+      { id:"b1", name:"Bruce Willis", img:"./images/actors/willis.jpg", groupId:"armageddon" },
+      { id:"b2", name:"Ben Affleck", img:"./images/actors/affleck.jpg", groupId:"armageddon" },
+      { id:"b3", name:"Owen Wilson", img:"./images/actors/wilson.jpg", groupId:"armageddon" },
+      { id:"b4", name:"Liv Tyler", img:"./images/actors/tyler.jpg", groupId:"armageddon" },
 
-      { id:"c1", name:"Robert Redford", img:"../images/actors/redford.jpeg", groupId:"thenatural" },
-      { id:"c2", name:"Robert Duvall", img:"../images/actors/duvall.jpg", groupId:"thenatural" },
-      { id:"c3", name:"Kim Basinger", img:"../images/actors/basinger.webp", groupId:"thenatural" },
-      { id:"c4", name:"Wilford Brimley", img:"../images/actors/brimley.jpeg", groupId:"thenatural" },
+      { id:"c1", name:"Adam Sandler", img:"./images/actors/sandler.avif", groupId:"weddingsinger" },
+      { id:"c2", name:"Drew Barrymore", img:"./images/actors/barrymore.webp", groupId:"weddingsinger" },
+      { id:"c3", name:"Billy Idol", img:"./images/actors/idol.jpg", groupId:"weddingsinger" },
+      { id:"c4", name:"Steve Buscemi", img:"./images/actors/buscemi.jpg", groupId:"weddingsinger" },
 
-      { id:"d1", name:"Kevin Costner", img:"../images/actors/costner.jpg", groupId:"fieldofdreams" },
-      { id:"d2", name:"Burt Lancaster", img:"../images/actors/lancaster.webp", groupId:"fieldofdreams" },
-      { id:"d3", name:"Ray Liotta", img:"../images/actors/liotta.jpg", groupId:"fieldofdreams" },
-      { id:"d4", name:"James Earl Jones", img:"../images/actors/jonesjamesearl.png", groupId:"fieldofdreams" },
+      { id:"d1", name:"Tom Hanks", img:"./images/actors/hanks.jpg", groupId:"privateryan" },
+      { id:"d2", name:"Matt Damon", img:"./images/actors/damon.jpg", groupId:"privateryan" },
+      { id:"d3", name:"Ted Danson", img:"./images/actors/danson.jpg.webp", groupId:"privateryan" },
+      { id:"d4", name:"Vin Diesel", img:"./images/actors/diesel.jpg", groupId:"privateryan" },
     ];
 
 
@@ -802,23 +791,10 @@
         return;
       }
 
-      const match = window.location.pathname.match(/(\d+)\.html$/);
-      const currentArchiveNumber = match ? Number(match[1]) : null;
-
       archiveList.forEach((archiveNumber) => {
         const i = Number(archiveNumber);
-
-        if (i === currentArchiveNumber) {
-          const span = document.createElement("span");
-          span.className = "current-archive";
-          span.textContent = i;
-          span.setAttribute("aria-current", "page");
-          archiveEl.appendChild(span);
-          return;
-        }
-
         const a = document.createElement("a");
-        a.href = `${i}.html`;
+        a.href = `./archives/${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
@@ -1165,7 +1141,7 @@
       hidePosterPop(true);
       renderAll();
 
-      setMsg("Select <strong>4</strong> actors who all played the same character in different movies");
+      setMsg("Select <strong>4</strong> actors who were in the same movie. Solve 4 groups");
       updateAttempts();
       renderArchiveButtons();
 
@@ -1718,9 +1694,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="../tile-flip.mp3" type="audio/mpeg"/>
+<source src="./tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="./deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">
@@ -1728,6 +1704,5 @@ el.classList.add("flipped");
 <div class="solved-toast-sub">Nice work 🎉</div>
 </div>
 </div>
-
 </body>
 </html>

@@ -1,1 +1,1 @@
-const ARCHIVES = [1, 2, 3, 4, 5];
+const ARCHIVES = [1, 2, 3, 4, 5, 6];
