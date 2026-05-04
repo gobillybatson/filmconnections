@@ -795,8 +795,11 @@
       // Files already inside /archives/ need links like 1.html.
       const path = window.location.pathname;
       const inArchiveFolder = /\/archives\//.test(path);
-      const match = path.match(/\/archives\/(\d+)\.html$/);
-      const currentArchiveNumber = match ? Number(match[1]) : null;
+      const fileName = path.split("/").pop();
+      const archiveNumber = fileName && fileName.endsWith(".html")
+        ? Number(fileName.replace(".html", ""))
+        : null;
+      const currentArchiveNumber = Number.isFinite(archiveNumber) ? archiveNumber : null;
 
       archiveList.forEach((archiveNumber) => {
         const i = Number(archiveNumber);
