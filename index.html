@@ -702,8 +702,8 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
-<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="./index.html">
+<img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
 </a>
 <span class="title-theme">Baseball Movies</span>
 </div>
@@ -741,7 +741,7 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
-<script src="../archive-data.js"></script>
+<script src="./archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
@@ -750,33 +750,33 @@
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const GROUPS = [
-      { groupId: "leagueoftheirown", movieTitle: "League of Their Own", difficulty: 1, posterImg: "../images/posters/leagueoftheirown.jpeg" },
-      { groupId: "fieldofdreams", movieTitle: "Field of Dreams", difficulty: 2, posterImg: "../images/posters/fieldofdreams.jpg" },
-      { groupId: "majorleague", movieTitle: "Major League", difficulty: 3, posterImg: "../images/posters/major league.jpg" },
-      { groupId: "thenatural", movieTitle: "The Natural", difficulty: 4, posterImg: "../images/posters/natural.webp" },
+      { groupId: "leagueoftheirown", movieTitle: "League of Their Own", difficulty: 1, posterImg: "./images/posters/leagueoftheirown.jpeg" },
+      { groupId: "fieldofdreams", movieTitle: "Field of Dreams", difficulty: 2, posterImg: "./images/posters/fieldofdreams.jpg" },
+      { groupId: "majorleague", movieTitle: "Major League", difficulty: 3, posterImg: "./images/posters/major league.jpg" },
+      { groupId: "thenatural", movieTitle: "The Natural", difficulty: 4, posterImg: "./images/posters/natural.webp" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Charlie Sheen", img:"../images/actors/sheen.avif", groupId:"majorleague" },
-      { id:"a2", name:"Wesley Snipes", img:"../images/actors/snipes.webp", groupId:"majorleague" },
-      { id:"a3", name:"Tom Berenger", img:"../images/actors/berenger.jpg", groupId:"majorleague" },
-      { id:"a4", name:"Bob Ueker", img:"../images/actors/ueker.jpg", groupId:"majorleague" },
+      { id:"a1", name:"Charlie Sheen", img:"./images/actors/sheen.avif", groupId:"majorleague" },
+      { id:"a2", name:"Wesley Snipes", img:"./images/actors/snipes.webp", groupId:"majorleague" },
+      { id:"a3", name:"Tom Berenger", img:"./images/actors/berenger.jpg", groupId:"majorleague" },
+      { id:"a4", name:"Bob Ueker", img:"./images/actors/ueker.jpg", groupId:"majorleague" },
 
-      { id:"b1", name:"Geena Davis", img:"../images/actors/davis.webp", groupId:"leagueoftheirown" },
-      { id:"b2", name:"Madonna", img:"../images/actors/madonna.jpg", groupId:"leagueoftheirown" },
-      { id:"b3", name:"Rosie O'Donnell", img:"../images/actors/odonnell.jpg", groupId:"leagueoftheirown" },
-      { id:"b4", name:"Tom Hanks", img:"../images/actors/hanks.jpg", groupId:"leagueoftheirown" },
+      { id:"b1", name:"Geena Davis", img:"./images/actors/davis.webp", groupId:"leagueoftheirown" },
+      { id:"b2", name:"Madonna", img:"./images/actors/madonna.jpg", groupId:"leagueoftheirown" },
+      { id:"b3", name:"Rosie O'Donnell", img:"./images/actors/odonnell.jpg", groupId:"leagueoftheirown" },
+      { id:"b4", name:"Tom Hanks", img:"./images/actors/hanks.jpg", groupId:"leagueoftheirown" },
 
-      { id:"c1", name:"Robert Redford", img:"../images/actors/redford.jpeg", groupId:"thenatural" },
-      { id:"c2", name:"Robert Duvall", img:"../images/actors/duvall.jpg", groupId:"thenatural" },
-      { id:"c3", name:"Kim Basinger", img:"../images/actors/basinger.webp", groupId:"thenatural" },
-      { id:"c4", name:"Wilford Brimley", img:"../images/actors/brimley.jpeg", groupId:"thenatural" },
+      { id:"c1", name:"Robert Redford", img:"./images/actors/redford.jpeg", groupId:"thenatural" },
+      { id:"c2", name:"Robert Duvall", img:"./images/actors/duvall.jpg", groupId:"thenatural" },
+      { id:"c3", name:"Kim Basinger", img:"./images/actors/basinger.webp", groupId:"thenatural" },
+      { id:"c4", name:"Wilford Brimley", img:"./images/actors/brimley.jpeg", groupId:"thenatural" },
 
-      { id:"d1", name:"Kevin Costner", img:"../images/actors/costner.jpg", groupId:"fieldofdreams" },
-      { id:"d2", name:"Burt Lancaster", img:"../images/actors/lancaster.webp", groupId:"fieldofdreams" },
-      { id:"d3", name:"Ray Liotta", img:"../images/actors/liotta.jpg", groupId:"fieldofdreams" },
-      { id:"d4", name:"James Earl Jones", img:"../images/actors/jonesjamesearl.png", groupId:"fieldofdreams" },
+      { id:"d1", name:"Kevin Costner", img:"./images/actors/costner.jpg", groupId:"fieldofdreams" },
+      { id:"d2", name:"Burt Lancaster", img:"./images/actors/lancaster.webp", groupId:"fieldofdreams" },
+      { id:"d3", name:"Ray Liotta", img:"./images/actors/liotta.jpg", groupId:"fieldofdreams" },
+      { id:"d4", name:"James Earl Jones", img:"./images/actors/jonesjamesearl.png", groupId:"fieldofdreams" },
     ];
 
 
@@ -795,14 +795,18 @@
       const archiveList =
         (typeof ARCHIVES !== "undefined" && Array.isArray(ARCHIVES))
           ? ARCHIVES
-          : [1, 2, 3, 4, 5];
+          : [1, 2, 3, 4, 5, 6];
 
       if (archiveList.length === 0) {
         archiveEl.innerHTML = '<span class="archive-note">No archived puzzles yet.</span>';
         return;
       }
 
-      const match = window.location.pathname.match(/(\d+)\.html$/);
+      // Root index.html needs links like ./archives/1.html.
+      // Files already inside /archives/ need links like 1.html.
+      const path = window.location.pathname;
+      const inArchiveFolder = /\/archives\//.test(path);
+      const match = path.match(/\/archives\/(\d+)\.html$/);
       const currentArchiveNumber = match ? Number(match[1]) : null;
 
       archiveList.forEach((archiveNumber) => {
@@ -818,7 +822,7 @@
         }
 
         const a = document.createElement("a");
-        a.href = `${i}.html`;
+        a.href = inArchiveFolder ? `${i}.html` : `./archives/${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
@@ -1718,9 +1722,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="../tile-flip.mp3" type="audio/mpeg"/>
+<source src="./tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="./deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">

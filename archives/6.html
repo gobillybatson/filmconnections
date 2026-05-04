@@ -694,8 +694,8 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="index.html">
-<img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
+<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
 </a>
 <span class="title-theme">1998</span>
 </div>
@@ -733,39 +733,39 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
-<script src="archive-data.js"></script>
+<script src="../archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "armageddon", movieTitle: "Armageddon", difficulty: 1, posterImg: "images/posters/armageddon.jpg" },
-      { groupId: "privateryan", movieTitle: "Saving Private Ryan", difficulty: 2, posterImg: "images/posters/savingprivateryan.jpg" },
-      { groupId: "biglebowski", movieTitle: "The Big Lebowski", difficulty: 3, posterImg: "images/posters/biglebowski.jpeg" },
-      { groupId: "weddingsinger", movieTitle: "The Wedding Singer", difficulty: 4, posterImg: "images/posters/weddingsinger.jpg" },
+      { groupId: "armageddon", movieTitle: "Armageddon", difficulty: 1, posterImg: "../images/posters/armageddon.jpg" },
+      { groupId: "privateryan", movieTitle: "Saving Private Ryan", difficulty: 2, posterImg: "../images/posters/savingprivateryan.jpg" },
+      { groupId: "biglebowski", movieTitle: "The Big Lebowski", difficulty: 3, posterImg: "../images/posters/biglebowski.jpeg" },
+      { groupId: "weddingsinger", movieTitle: "The Wedding Singer", difficulty: 4, posterImg: "../images/posters/weddingsinger.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Jeff Bridges", img:"./images/actors/bridges.jpg", groupId:"biglebowski" },
-      { id:"a2", name:"John Goodman", img:"./images/actors/goodman.jpg", groupId:"biglebowski" },
-      { id:"a3", name:"Julianne Moore", img:"./images/actors/moorejulianne.jpg", groupId:"biglebowski" },
-      { id:"a4", name:"Philip Seymore Hoffman", img:"./images/actors/hoffman.webp", groupId:"biglebowski" },
+      { id:"a1", name:"Jeff Bridges", img:"../images/actors/bridges.jpg", groupId:"biglebowski" },
+      { id:"a2", name:"John Goodman", img:"../images/actors/goodman.jpg", groupId:"biglebowski" },
+      { id:"a3", name:"Julianne Moore", img:"../images/actors/moorejulianne.jpg", groupId:"biglebowski" },
+      { id:"a4", name:"Philip Seymore Hoffman", img:"../images/actors/hoffman.webp", groupId:"biglebowski" },
 
-      { id:"b1", name:"Bruce Willis", img:"./images/actors/willis.jpg", groupId:"armageddon" },
-      { id:"b2", name:"Ben Affleck", img:"./images/actors/affleck.jpg", groupId:"armageddon" },
-      { id:"b3", name:"Owen Wilson", img:"./images/actors/wilson.jpg", groupId:"armageddon" },
-      { id:"b4", name:"Liv Tyler", img:"./images/actors/tyler.jpg", groupId:"armageddon" },
+      { id:"b1", name:"Bruce Willis", img:"../images/actors/willis.jpg", groupId:"armageddon" },
+      { id:"b2", name:"Ben Affleck", img:"../images/actors/affleck.jpg", groupId:"armageddon" },
+      { id:"b3", name:"Owen Wilson", img:"../images/actors/wilson.jpg", groupId:"armageddon" },
+      { id:"b4", name:"Liv Tyler", img:"../images/actors/tyler.jpg", groupId:"armageddon" },
 
-      { id:"c1", name:"Adam Sandler", img:"./images/actors/sandler.avif", groupId:"weddingsinger" },
-      { id:"c2", name:"Drew Barrymore", img:"./images/actors/barrymore.webp", groupId:"weddingsinger" },
-      { id:"c3", name:"Billy Idol", img:"./images/actors/idol.jpg", groupId:"weddingsinger" },
-      { id:"c4", name:"Steve Buscemi", img:"./images/actors/buscemi.jpg", groupId:"weddingsinger" },
+      { id:"c1", name:"Adam Sandler", img:"../images/actors/sandler.avif", groupId:"weddingsinger" },
+      { id:"c2", name:"Drew Barrymore", img:"../images/actors/barrymore.webp", groupId:"weddingsinger" },
+      { id:"c3", name:"Billy Idol", img:"../images/actors/idol.jpg", groupId:"weddingsinger" },
+      { id:"c4", name:"Steve Buscemi", img:"../images/actors/buscemi.jpg", groupId:"weddingsinger" },
 
-      { id:"d1", name:"Tom Hanks", img:"./images/actors/hanks.jpg", groupId:"privateryan" },
-      { id:"d2", name:"Matt Damon", img:"./images/actors/damon.jpg", groupId:"privateryan" },
-      { id:"d3", name:"Ted Danson", img:"./images/actors/danson.jpg.webp", groupId:"privateryan" },
-      { id:"d4", name:"Vin Diesel", img:"./images/actors/diesel.jpg", groupId:"privateryan" },
+      { id:"d1", name:"Tom Hanks", img:"../images/actors/hanks.jpg", groupId:"privateryan" },
+      { id:"d2", name:"Matt Damon", img:"../images/actors/damon.jpg", groupId:"privateryan" },
+      { id:"d3", name:"Ted Danson", img:"../images/actors/danson.jpg.webp", groupId:"privateryan" },
+      { id:"d4", name:"Vin Diesel", img:"../images/actors/diesel.jpg", groupId:"privateryan" },
     ];
 
 
@@ -784,17 +784,34 @@
       const archiveList =
         (typeof ARCHIVES !== "undefined" && Array.isArray(ARCHIVES))
           ? ARCHIVES
-          : [1, 2, 3, 4, 5];
+          : [1, 2, 3, 4, 5, 6];
 
       if (archiveList.length === 0) {
         archiveEl.innerHTML = '<span class="archive-note">No archived puzzles yet.</span>';
         return;
       }
 
+      // Root index.html needs links like ./archives/1.html.
+      // Files already inside /archives/ need links like 1.html.
+      const path = window.location.pathname;
+      const inArchiveFolder = /\/archives\//.test(path);
+      const match = path.match(/\/archives\/(\d+)\.html$/);
+      const currentArchiveNumber = match ? Number(match[1]) : null;
+
       archiveList.forEach((archiveNumber) => {
         const i = Number(archiveNumber);
+
+        if (i === currentArchiveNumber) {
+          const span = document.createElement("span");
+          span.className = "current-archive";
+          span.textContent = i;
+          span.setAttribute("aria-current", "page");
+          archiveEl.appendChild(span);
+          return;
+        }
+
         const a = document.createElement("a");
-        a.href = `./archives/${i}.html`;
+        a.href = inArchiveFolder ? `${i}.html` : `./archives/${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
@@ -1694,9 +1711,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="./tile-flip.mp3" type="audio/mpeg"/>
+<source src="../tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="./deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">
