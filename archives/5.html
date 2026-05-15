@@ -702,8 +702,8 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
-<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="/index.html">
+<img alt="Film Connections" class="title-image" src="/images/film-connections-button.png"/>
 </a>
 <span class="title-theme">Characters</span>
 </div>
@@ -741,7 +741,7 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
-<script src="../archive-data.js"></script>
+<script src="/archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
@@ -750,33 +750,33 @@
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const GROUPS = [
-      { groupId: "james_bond", movieTitle: "James Bond", difficulty: 1, posterImg: "../images/posters/bond.jpg" },
-      { groupId: "batman", movieTitle: "Batman", difficulty: 2, posterImg: "../images/posters/batman.webp" },
-      { groupId: "sherlock_holmes", movieTitle: "Sherlock Holmes", difficulty: 3, posterImg: "../images/posters/sherlock.jpg" },
-      { groupId: "jack-ryan", movieTitle: "Jack Ryan", difficulty: 4, posterImg: "../images/posters/ryan.webp" },
+      { groupId: "james_bond", movieTitle: "James Bond", difficulty: 1, posterImg: "/images/posters/bond.jpg" },
+      { groupId: "batman", movieTitle: "Batman", difficulty: 2, posterImg: "/images/posters/batman.webp" },
+      { groupId: "sherlock_holmes", movieTitle: "Sherlock Holmes", difficulty: 3, posterImg: "/images/posters/sherlock.jpg" },
+      { groupId: "jack-ryan", movieTitle: "Jack Ryan", difficulty: 4, posterImg: "/images/posters/ryan.webp" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Benedict Cumberbatch", img:"../images/actors/cumberbatch.avif", groupId:"sherlock_holmes" },
-      { id:"a2", name:"Robert Downey Jr", img:"../images/actors/downey.jpg", groupId:"sherlock_holmes" },
-      { id:"a3", name:"Will Ferrell", img:"../images/actors/ferrell.webp", groupId:"sherlock_holmes" },
-      { id:"a4", name:"Henry Cavill", img:"../images/actors/cavill.webp", groupId:"sherlock_holmes" },
+      { id:"a1", name:"Benedict Cumberbatch", img:"/images/actors/cumberbatch.avif", groupId:"sherlock_holmes" },
+      { id:"a2", name:"Robert Downey Jr", img:"/images/actors/downey.jpg", groupId:"sherlock_holmes" },
+      { id:"a3", name:"Will Ferrell", img:"/images/actors/ferrell.webp", groupId:"sherlock_holmes" },
+      { id:"a4", name:"Henry Cavill", img:"/images/actors/cavill.webp", groupId:"sherlock_holmes" },
 
-      { id:"b1", name:"Roger Moore", img:"../images/actors/moore.webp", groupId:"james_bond" },
-      { id:"b2", name:"Sean Connery", img:"../images/actors/connery.webp", groupId:"james_bond" },
-      { id:"b3", name:"Daniel Craig", img:"../images/actors/craig.webp", groupId:"james_bond" },
-      { id:"b4", name:"Pierce Brosnan", img:"../images/actors/brosnan.jpg", groupId:"james_bond" },
+      { id:"b1", name:"Roger Moore", img:"/images/actors/moore.webp", groupId:"james_bond" },
+      { id:"b2", name:"Sean Connery", img:"/images/actors/connery.webp", groupId:"james_bond" },
+      { id:"b3", name:"Daniel Craig", img:"/images/actors/craig.webp", groupId:"james_bond" },
+      { id:"b4", name:"Pierce Brosnan", img:"/images/actors/brosnan.jpg", groupId:"james_bond" },
 
-      { id:"c1", name:"John Krasinski", img:"../images/actors/krasinski.jpg", groupId:"jack-ryan" },
-      { id:"c2", name:"Alec Baldwin", img:"../images/actors/baldwin.jpg", groupId:"jack-ryan" },
-      { id:"c3", name:"Harrison Ford", img:"../images/actors/ford.webp", groupId:"jack-ryan" },
-      { id:"c4", name:"Chris Pine", img:"../images/actors/pine.jpg", groupId:"jack-ryan" },
+      { id:"c1", name:"John Krasinski", img:"/images/actors/krasinski.jpg", groupId:"jack-ryan" },
+      { id:"c2", name:"Alec Baldwin", img:"/images/actors/baldwin.jpg", groupId:"jack-ryan" },
+      { id:"c3", name:"Harrison Ford", img:"/images/actors/ford.webp", groupId:"jack-ryan" },
+      { id:"c4", name:"Chris Pine", img:"/images/actors/pine.jpg", groupId:"jack-ryan" },
 
-      { id:"d1", name:"Michael Keaton", img:"../images/actors/keatonmichael.jpg.webp", groupId:"batman" },
-      { id:"d2", name:"Ben Affleck", img:"../images/actors/affleck.jpg", groupId:"batman" },
-      { id:"d3", name:"Val Kilmer", img:"../images/actors/kilmer.jpg", groupId:"batman" },
-      { id:"d4", name:"George Clooney", img:"../images/actors/clooney.jpg", groupId:"batman" },
+      { id:"d1", name:"Michael Keaton", img:"/images/actors/keatonmichael.jpg.webp", groupId:"batman" },
+      { id:"d2", name:"Ben Affleck", img:"/images/actors/affleck.jpg", groupId:"batman" },
+      { id:"d3", name:"Val Kilmer", img:"/images/actors/kilmer.jpg", groupId:"batman" },
+      { id:"d4", name:"George Clooney", img:"/images/actors/clooney.jpg", groupId:"batman" },
     ];
 
 
@@ -1584,7 +1584,7 @@ el.classList.add("flipped");
       // encode spaces for URLs
       s = s.replace(/ /g, "%20");
       // if it's a relative path without ./ or /, prefix ./
-      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("../")) {
+      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("/")) {
         s = "./" + s;
       }
       return s;
@@ -1718,9 +1718,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="../tile-flip.mp3" type="audio/mpeg"/>
+<source src="/tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="/deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">
