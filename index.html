@@ -702,8 +702,8 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="./index.html">
-<img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="/index.html">
+<img alt="Film Connections" class="title-image" src="/images/film-connections-button.png"/>
 </a>
 <span class="title-theme">NO MARVEL!</span>
 </div>
@@ -750,33 +750,33 @@
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const GROUPS = [
-      { groupId: "ghostbusters", movieTitle: "Ghostbusters", difficulty: 1, posterImg: "./images/posters/ghostbusters.webp" },
-      { groupId: "knives_out", movieTitle: "Knives Out", difficulty: 2, posterImg: "./images/posters/knives_out.jpg" },
-      { groupId: "oppenheimer", movieTitle: "Oppenheimer", difficulty: 3, posterImg: "./images/posters/oppenheimer.webp" },
-      { groupId: "hurt_locker", movieTitle: "The Hurt Locker", difficulty: 4, posterImg: "./images/posters/hurt locker.jpeg" },
+      { groupId: "ghostbusters", movieTitle: "Ghostbusters", difficulty: 1, posterImg: "/images/posters/ghostbusters.webp" },
+      { groupId: "knives_out", movieTitle: "Knives Out", difficulty: 2, posterImg: "/images/posters/knives_out.jpg" },
+      { groupId: "oppenheimer", movieTitle: "Oppenheimer", difficulty: 3, posterImg: "/images/posters/oppenheimer.webp" },
+      { groupId: "hurt_locker", movieTitle: "The Hurt Locker", difficulty: 4, posterImg: "/images/posters/hurt locker.jpeg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Robert Downey Jr", img:"./images/actors/downey.jpg", groupId:"oppenheimer" },
-      { id:"a2", name:"Florence Pugh", img:"./images/actors/pugh.jpeg", groupId:"oppenheimer" },
-      { id:"a3", name:"Matt Damon", img:"./images/actors/damon.webp", groupId:"oppenheimer" },
-      { id:"a4", name:"Emily Blunt", img:"./images/actors/blunt.jpg", groupId:"oppenheimer" },
+      { id:"a1", name:"Robert Downey Jr", img:"/images/actors/downey.jpg", groupId:"oppenheimer" },
+      { id:"a2", name:"Florence Pugh", img:"/images/actors/pugh.jpeg", groupId:"oppenheimer" },
+      { id:"a3", name:"Matt Damon", img:"/images/actors/damon.webp", groupId:"oppenheimer" },
+      { id:"a4", name:"Emily Blunt", img:"/images/actors/blunt.jpg", groupId:"oppenheimer" },
 
-      { id:"b1", name:"Chris Hemsworth", img:"./images/actors/hemsworth.webp", groupId:"ghostbusters" },
-      { id:"b2", name:"Kristen Wiig", img:"./images/actors/wiig.jpg", groupId:"ghostbusters" },
-      { id:"b3", name:"Kate McKinnon", img:"./images/actors/mckinnnon.webp", groupId:"ghostbusters" },
-      { id:"b4", name:"Melissa McCarthy", img:"./images/actors/mccarthy.webp", groupId:"ghostbusters" },
+      { id:"b1", name:"Chris Hemsworth", img:"/images/actors/hemsworth.webp", groupId:"ghostbusters" },
+      { id:"b2", name:"Kristen Wiig", img:"/images/actors/wiig.jpg", groupId:"ghostbusters" },
+      { id:"b3", name:"Kate McKinnon", img:"/images/actors/mckinnnon.webp", groupId:"ghostbusters" },
+      { id:"b4", name:"Melissa McCarthy", img:"/images/actors/mccarthy.webp", groupId:"ghostbusters" },
 
-      { id:"c1", name:"Jeremy Renner", img:"./images/actors/renner.webp", groupId:"hurt_locker" },
-      { id:"c2", name:"Anthony Mackie", img:"./images/actors/mackie.webp", groupId:"hurt_locker" },
-      { id:"c3", name:"Ralph Fiennes", img:"./images/actors/fiennes.webp", groupId:"hurt_locker" },
-      { id:"c4", name:"Evangeline Lilly", img:"./images/actors/lilly.avif", groupId:"hurt_locker" },
+      { id:"c1", name:"Jeremy Renner", img:"/images/actors/renner.webp", groupId:"hurt_locker" },
+      { id:"c2", name:"Anthony Mackie", img:"/images/actors/mackie.webp", groupId:"hurt_locker" },
+      { id:"c3", name:"Ralph Fiennes", img:"/images/actors/fiennes.webp", groupId:"hurt_locker" },
+      { id:"c4", name:"Evangeline Lilly", img:"/images/actors/lilly.avif", groupId:"hurt_locker" },
 
-      { id:"d1", name:"Chris Evans", img:"./images/actors/evans.jpg", groupId:"knives_out" },
-      { id:"d2", name:"Don Johnson", img:"./images/actors/johnson.webp", groupId:"knives_out" },
-      { id:"d3", name:"Jamie Lee Curtis", img:"./images/actors/curtis.webp", groupId:"knives_out" },
-      { id:"d4", name:"Daniel Craig", img:"./images/actors/craig.webp", groupId:"knives_out" },
+      { id:"d1", name:"Chris Evans", img:"/images/actors/evans.jpg", groupId:"knives_out" },
+      { id:"d2", name:"Don Johnson", img:"/images/actors/johnson.webp", groupId:"knives_out" },
+      { id:"d3", name:"Jamie Lee Curtis", img:"/images/actors/curtis.webp", groupId:"knives_out" },
+      { id:"d4", name:"Daniel Craig", img:"/images/actors/craig.webp", groupId:"knives_out" },
     ];
 
 
@@ -802,7 +802,7 @@
         return;
       }
 
-      // Root index.html needs links like ./archives/1.html.
+      // Root index.html needs links like /archives/1.html.
       // Files already inside /archives/ need links like 1.html.
       const path = window.location.pathname;
       const inArchiveFolder = /\/archives\//.test(path);
@@ -822,7 +822,7 @@
         }
 
         const a = document.createElement("a");
-        a.href = inArchiveFolder ? `${i}.html` : `./archives/${i}.html`;
+        a.href = inArchiveFolder ? `${i}.html` : `/archives/${i}.html`;
         a.textContent = i;
         a.setAttribute("aria-label", `Play archived puzzle ${i}`);
         archiveEl.appendChild(a);
@@ -1587,9 +1587,9 @@ el.classList.add("flipped");
       s = s.replace(/\s+/g, " ").trim();
       // encode spaces for URLs
       s = s.replace(/ /g, "%20");
-      // if it's a relative path without ./ or /, prefix ./
-      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("../")) {
-        s = "./" + s;
+      // if it's a relative path without / or /, prefix /
+      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("/") && !s.startsWith("./")) {
+        s = "/" + s;
       }
       return s;
     }
@@ -1722,9 +1722,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="./tile-flip.mp3" type="audio/mpeg"/>
+<source src="/tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="./deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="/deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">
