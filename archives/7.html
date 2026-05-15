@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Play Film Connections, it's like Connections, but with actors, actresses and movies" name="description"/>
-<title>Film Connections: Movie Cast Puzzle - NO MARVEL!</title>
+<title>Film Connections: Movie Cast Puzzle - Baseball Movies</title>
 <style>
     :root{
       --bg:#f4f5f7;
@@ -705,9 +705,9 @@
 <a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="./index.html">
 <img alt="Film Connections" class="title-image" src="./images/film-connections-button.png"/>
 </a>
-<span class="title-theme">NO MARVEL!</span>
+<span class="title-theme">Baseball Movies</span>
 </div>
-<p class="sub">This one is tough, none of the correct answers are Marvel movies</p>
+<p class="sub">The greatest genre of sports movies, question.</p>
 <div class="controls controls-under-sub">
 <button id="btnShuffle" type="button">Shuffle</button>
 <button id="btnDeselect" type="button">Deselect All</button>
@@ -750,33 +750,33 @@
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const GROUPS = [
-      { groupId: "ghostbusters", movieTitle: "Ghostbusters", difficulty: 1, posterImg: "./images/posters/ghostbusters.webp" },
-      { groupId: "knives_out", movieTitle: "Knives Out", difficulty: 2, posterImg: "./images/posters/knives_out.jpg" },
-      { groupId: "oppenheimer", movieTitle: "Oppenheimer", difficulty: 3, posterImg: "./images/posters/oppenheimer.webp" },
-      { groupId: "hurt_locker", movieTitle: "The Hurt Locker", difficulty: 4, posterImg: "./images/posters/hurt locker.jpeg" },
+      { groupId: "leagueoftheirown", movieTitle: "League of Their Own", difficulty: 1, posterImg: "../images/posters/leagueoftheirown.jpeg" },
+      { groupId: "fieldofdreams", movieTitle: "Field of Dreams", difficulty: 2, posterImg: "../images/posters/fieldofdreams.jpg" },
+      { groupId: "majorleague", movieTitle: "Major League", difficulty: 3, posterImg: "../images/posters/majorleague.jpg" },
+      { groupId: "thenatural", movieTitle: "The Natural", difficulty: 4, posterImg: "../images/posters/natural.webp" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Robert Downey Jr", img:"./images/actors/downey.jpg", groupId:"oppenheimer" },
-      { id:"a2", name:"Florence Pugh", img:"./images/actors/pugh.jpeg", groupId:"oppenheimer" },
-      { id:"a3", name:"Matt Damon", img:"./images/actors/damon.webp", groupId:"oppenheimer" },
-      { id:"a4", name:"Emily Blunt", img:"./images/actors/blunt.jpg", groupId:"oppenheimer" },
+      { id:"a1", name:"Charlie Sheen", img:"../images/actors/sheen.avif", groupId:"majorleague" },
+      { id:"a2", name:"Wesley Snipes", img:"../images/actors/snipes.webp", groupId:"majorleague" },
+      { id:"a3", name:"Tom Berenger", img:"../images/actors/berenger.jpg", groupId:"majorleague" },
+      { id:"a4", name:"Bob Ueker", img:"../images/actors/ueker.jpg", groupId:"majorleague" },
 
-      { id:"b1", name:"Chris Hemsworth", img:"./images/actors/hemsworth.webp", groupId:"ghostbusters" },
-      { id:"b2", name:"Kristen Wiig", img:"./images/actors/wiig.jpg", groupId:"ghostbusters" },
-      { id:"b3", name:"Kate McKinnon", img:"./images/actors/mckinnnon.webp", groupId:"ghostbusters" },
-      { id:"b4", name:"Melissa McCarthy", img:"./images/actors/mccarthy.webp", groupId:"ghostbusters" },
+      { id:"b1", name:"Geena Davis", img:"../images/actors/davis.webp", groupId:"leagueoftheirown" },
+      { id:"b2", name:"Madonna", img:"../images/actors/madonna.jpg", groupId:"leagueoftheirown" },
+      { id:"b3", name:"Rosie O'Donnell", img:"../images/actors/odonnell.jpg", groupId:"leagueoftheirown" },
+      { id:"b4", name:"Tom Hanks", img:"../images/actors/hanks.jpg", groupId:"leagueoftheirown" },
 
-      { id:"c1", name:"Jeremy Renner", img:"./images/actors/renner.webp", groupId:"hurt_locker" },
-      { id:"c2", name:"Anthony Mackie", img:"./images/actors/mackie.webp", groupId:"hurt_locker" },
-      { id:"c3", name:"Ralph Fiennes", img:"./images/actors/fiennes.webp", groupId:"hurt_locker" },
-      { id:"c4", name:"Evangeline Lilly", img:"./images/actors/lilly.avif", groupId:"hurt_locker" },
+      { id:"c1", name:"Robert Redford", img:"../images/actors/redford.jpeg", groupId:"thenatural" },
+      { id:"c2", name:"Robert Duvall", img:"../images/actors/duvall.jpg", groupId:"thenatural" },
+      { id:"c3", name:"Kim Basinger", img:"../images/actors/basinger.webp", groupId:"thenatural" },
+      { id:"c4", name:"Wilford Brimley", img:"../images/actors/brimley.jpeg", groupId:"thenatural" },
 
-      { id:"d1", name:"Chris Evans", img:"./images/actors/evans.jpg", groupId:"knives_out" },
-      { id:"d2", name:"Don Johnson", img:"./images/actors/johnson.webp", groupId:"knives_out" },
-      { id:"d3", name:"Jamie Lee Curtis", img:"./images/actors/curtis.webp", groupId:"knives_out" },
-      { id:"d4", name:"Daniel Craig", img:"./images/actors/craig.webp", groupId:"knives_out" },
+      { id:"d1", name:"Kevin Costner", img:"../images/actors/costner.jpg", groupId:"fieldofdreams" },
+      { id:"d2", name:"Burt Lancaster", img:"../images/actors/lancaster.webp", groupId:"fieldofdreams" },
+      { id:"d3", name:"Ray Liotta", img:"../images/actors/liotta.jpg", groupId:"fieldofdreams" },
+      { id:"d4", name:"James Earl Jones", img:"../images/actors/jonesjamesearl.png", groupId:"fieldofdreams" },
     ];
 
 
