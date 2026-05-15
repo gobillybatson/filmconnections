@@ -702,8 +702,8 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
-<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="/index.html">
+<img alt="Film Connections" class="title-image" src="/images/film-connections-button.png"/>
 </a>
 <span class="title-theme">Comedies</span>
 </div>
@@ -741,39 +741,39 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
-<script src="../archive-data.js"></script>
+<script src="/archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "tommy_boy", movieTitle: "Tommy Boy", difficulty: 1, posterImg: "../images/posters/tommyboy.jpg" },
-      { groupId: "grown_ups", movieTitle: "Grown Ups", difficulty: 2, posterImg: "../images/posters/grownups.jpg" },
-      { groupId: "blues_brothers", movieTitle: "The Blues Brothers", difficulty: 3, posterImg: "../images/posters/bluesbrothers.jpg" },
-      { groupId: "coneheads", movieTitle: "Coneheads", difficulty: 4, posterImg: "../images/posters/coneheads.jpg" },
+      { groupId: "tommy_boy", movieTitle: "Tommy Boy", difficulty: 1, posterImg: "/images/posters/tommyboy.jpg" },
+      { groupId: "grown_ups", movieTitle: "Grown Ups", difficulty: 2, posterImg: "/images/posters/grownups.jpg" },
+      { groupId: "blues_brothers", movieTitle: "The Blues Brothers", difficulty: 3, posterImg: "/images/posters/bluesbrothers.jpg" },
+      { groupId: "coneheads", movieTitle: "Coneheads", difficulty: 4, posterImg: "/images/posters/coneheads.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"John Belushi", img:"../images/actors/belushi.jpg", groupId:"blues_brothers" },
-      { id:"a2", name:"Carrie Fisher", img:"../images/actors/fisher.jpg", groupId:"blues_brothers" },
-      { id:"a3", name:"Stephen Spielberg", img:"../images/actors/spielberg.jpg", groupId:"blues_brothers" },
-      { id:"a4", name:"John Candy", img:"../images/actors/candy.webp", groupId:"blues_brothers" },
+      { id:"a1", name:"John Belushi", img:"/images/actors/belushi.jpg", groupId:"blues_brothers" },
+      { id:"a2", name:"Carrie Fisher", img:"/images/actors/fisher.jpg", groupId:"blues_brothers" },
+      { id:"a3", name:"Stephen Spielberg", img:"/images/actors/spielberg.jpg", groupId:"blues_brothers" },
+      { id:"a4", name:"John Candy", img:"/images/actors/candy.webp", groupId:"blues_brothers" },
 
-      { id:"b1", name:"Chris Farley", img:"../images/actors/farley.jpg", groupId:"tommy_boy" },
-      { id:"b2", name:"David Spade", img:"../images/actors/spade.webp", groupId:"tommy_boy" },
-      { id:"b3", name:"Rob Lowe", img:"../images/actors/lowe.jpeg", groupId:"tommy_boy" },
-      { id:"b4", name:"Dan Aykroyd", img:"../images/actors/aykroyd.webp", groupId:"tommy_boy" },
+      { id:"b1", name:"Chris Farley", img:"/images/actors/farley.jpg", groupId:"tommy_boy" },
+      { id:"b2", name:"David Spade", img:"/images/actors/spade.webp", groupId:"tommy_boy" },
+      { id:"b3", name:"Rob Lowe", img:"/images/actors/lowe.jpeg", groupId:"tommy_boy" },
+      { id:"b4", name:"Dan Aykroyd", img:"/images/actors/aykroyd.webp", groupId:"tommy_boy" },
 
-      { id:"c1", name:"Jane Curtin", img:"../images/actors/curtin.jpeg", groupId:"coneheads" },
-      { id:"c2", name:"Phil Hartman", img:"../images/actors/hartman.webp", groupId:"coneheads" },
-      { id:"c3", name:"Michael McKean", img:"../images/actors/mckean.jpg", groupId:"coneheads" },
-      { id:"c4", name:"Jon Lovitz", img:"../images/actors/lovitz.webp", groupId:"coneheads" },
+      { id:"c1", name:"Jane Curtin", img:"/images/actors/curtin.jpeg", groupId:"coneheads" },
+      { id:"c2", name:"Phil Hartman", img:"/images/actors/hartman.webp", groupId:"coneheads" },
+      { id:"c3", name:"Michael McKean", img:"/images/actors/mckean.jpg", groupId:"coneheads" },
+      { id:"c4", name:"Jon Lovitz", img:"/images/actors/lovitz.webp", groupId:"coneheads" },
 
-      { id:"d1", name:"Adam Sandler", img:"../images/actors/sandler.avif", groupId:"grown_ups" },
-      { id:"d2", name:"Salma Hayek", img:"../images/actors/hayek.webp", groupId:"grown_ups" },
-      { id:"d3", name:"Chris Rock", img:"../images/actors/rockchris.jpg", groupId:"grown_ups" },
-      { id:"d4", name:"Kevin James", img:"../images/actors/james.webp", groupId:"grown_ups" },
+      { id:"d1", name:"Adam Sandler", img:"/images/actors/sandler.avif", groupId:"grown_ups" },
+      { id:"d2", name:"Salma Hayek", img:"/images/actors/hayek.webp", groupId:"grown_ups" },
+      { id:"d3", name:"Chris Rock", img:"/images/actors/rockchris.jpg", groupId:"grown_ups" },
+      { id:"d4", name:"Kevin James", img:"/images/actors/james.webp", groupId:"grown_ups" },
     ];
 
 
@@ -1581,7 +1581,7 @@ el.classList.add("flipped");
       // encode spaces for URLs
       s = s.replace(/ /g, "%20");
       // if it's a relative path without ./ or /, prefix ./
-      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("../")) {
+      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("/")) {
         s = "./" + s;
       }
       return s;
@@ -1715,9 +1715,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="../tile-flip.mp3" type="audio/mpeg"/>
+<source src="/tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="/deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">

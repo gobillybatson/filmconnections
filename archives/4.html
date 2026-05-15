@@ -702,8 +702,8 @@
 <header>
 <div>
 <div class="title-row">
-<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="../index.html">
-<img alt="Film Connections" class="title-image" src="../images/film-connections-button.png"/>
+<a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="/index.html">
+<img alt="Film Connections" class="title-image" src="/images/film-connections-button.png"/>
 </a>
 <span class="title-theme">Remakes</span>
 </div>
@@ -741,39 +741,39 @@
 </div>
 <!-- One away popup -->
 <div id="oneAwayPopup">One away…</div>
-<script src="../archive-data.js"></script>
+<script src="/archive-data.js"></script>
 <script>
     /******************************************************************
      * EDIT THESE TWO ARRAYS ONLY: GROUPS and TILES
      ******************************************************************/
     const GROUPS = [
-      { groupId: "oceans_eleven", movieTitle: "Oceans 11", difficulty: 1, posterImg: "../images/posters/oceans.jpg" },
-      { groupId: "true_grit", movieTitle: "True Grit", difficulty: 2, posterImg: "../images/posters/grit.jpg" },
-      { groupId: "magnificent_seven", movieTitle: "The Magnificent Seven", difficulty: 3, posterImg: "../images/posters/seven.jpg" },
-      { groupId: "planet_of_the_aoes", movieTitle: "Planet of the Apes", difficulty: 4, posterImg: "../images/posters/apes.jpg" },
+      { groupId: "oceans_eleven", movieTitle: "Oceans 11", difficulty: 1, posterImg: "/images/posters/oceans.jpg" },
+      { groupId: "true_grit", movieTitle: "True Grit", difficulty: 2, posterImg: "/images/posters/grit.jpg" },
+      { groupId: "magnificent_seven", movieTitle: "The Magnificent Seven", difficulty: 3, posterImg: "/images/posters/seven.jpg" },
+      { groupId: "planet_of_the_aoes", movieTitle: "Planet of the Apes", difficulty: 4, posterImg: "/images/posters/apes.jpg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Denzel Washington", img:"../images/actors/washington.webp", groupId:"magnificent_seven" },
-      { id:"a2", name:"Chris Pratt", img:"../images/actors/pratt.jpg", groupId:"magnificent_seven" },
-      { id:"a3", name:"Ethan Hawke", img:"../images/actors/hawke.webp", groupId:"magnificent_seven" },
-      { id:"a4", name:"Vincent D'Onofrio", img:"../images/actors/donofrio.jpg", groupId:"magnificent_seven" },
+      { id:"a1", name:"Denzel Washington", img:"/images/actors/washington.webp", groupId:"magnificent_seven" },
+      { id:"a2", name:"Chris Pratt", img:"/images/actors/pratt.jpg", groupId:"magnificent_seven" },
+      { id:"a3", name:"Ethan Hawke", img:"/images/actors/hawke.webp", groupId:"magnificent_seven" },
+      { id:"a4", name:"Vincent D'Onofrio", img:"/images/actors/donofrio.jpg", groupId:"magnificent_seven" },
 
-      { id:"b1", name:"George Clooney", img:"../images/actors/clooney.webp", groupId:"oceans_eleven" },
-      { id:"b2", name:"Brad Pitt", img:"../images/actors/pitt.jpg", groupId:"oceans_eleven" },
-      { id:"b3", name:"Julia Roberts", img:"../images/actors/roberts.webp", groupId:"oceans_eleven" },
-      { id:"b4", name:"Andy Garcia", img:"../images/actors/garcia.jpg", groupId:"oceans_eleven" },
+      { id:"b1", name:"George Clooney", img:"/images/actors/clooney.webp", groupId:"oceans_eleven" },
+      { id:"b2", name:"Brad Pitt", img:"/images/actors/pitt.jpg", groupId:"oceans_eleven" },
+      { id:"b3", name:"Julia Roberts", img:"/images/actors/roberts.webp", groupId:"oceans_eleven" },
+      { id:"b4", name:"Andy Garcia", img:"/images/actors/garcia.jpg", groupId:"oceans_eleven" },
 
-      { id:"c1", name:"Mark Wahlberg", img:"../images/actors/wahlberg.jpg", groupId:"planet_of_the_aoes" },
-      { id:"c2", name:"Helena Bonham Carter", img:"../images/actors/carter.jpg", groupId:"planet_of_the_aoes" },
-      { id:"c3", name:"Michael Clarke Duncan", img:"../images/actors/duncan.jpg", groupId:"planet_of_the_aoes" },
-      { id:"c4", name:"Paul Giamatti", img:"../images/actors/giamatti.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c1", name:"Mark Wahlberg", img:"/images/actors/wahlberg.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c2", name:"Helena Bonham Carter", img:"/images/actors/carter.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c3", name:"Michael Clarke Duncan", img:"/images/actors/duncan.jpg", groupId:"planet_of_the_aoes" },
+      { id:"c4", name:"Paul Giamatti", img:"/images/actors/giamatti.jpg", groupId:"planet_of_the_aoes" },
 
-      { id:"d1", name:"Jeff Bridges", img:"../images/actors/bridgesjeff.jpg", groupId:"true_grit" },
-      { id:"d2", name:"Matt Damon", img:"../images/actors/damon.jpg", groupId:"true_grit" },
-      { id:"d3", name:"Hailee Steinfeld", img:"../images/actors/steinfeld.jpg", groupId:"true_grit" },
-      { id:"d4", name:"Barry Pepper", img:"../images/actors/pepper.webp", groupId:"true_grit" },
+      { id:"d1", name:"Jeff Bridges", img:"/images/actors/bridgesjeff.jpg", groupId:"true_grit" },
+      { id:"d2", name:"Matt Damon", img:"/images/actors/damon.jpg", groupId:"true_grit" },
+      { id:"d3", name:"Hailee Steinfeld", img:"/images/actors/steinfeld.jpg", groupId:"true_grit" },
+      { id:"d4", name:"Barry Pepper", img:"/images/actors/pepper.webp", groupId:"true_grit" },
     ];
 
 
@@ -1581,7 +1581,7 @@ el.classList.add("flipped");
       // encode spaces for URLs
       s = s.replace(/ /g, "%20");
       // if it's a relative path without ./ or /, prefix ./
-      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("../")) {
+      if (!/^https?:\/\//i.test(s) && !s.startsWith("/") && !s.startsWith("./") && !s.startsWith("/")) {
         s = "./" + s;
       }
       return s;
@@ -1715,9 +1715,9 @@ el.classList.add("flipped");
   </script>
 <!-- Stone tile flip sound -->
 <audio id="tileFlipSound" preload="auto">
-<source src="../tile-flip.mp3" type="audio/mpeg"/>
+<source src="/tile-flip.mp3" type="audio/mpeg"/>
 </audio>
-<audio id="winSound" preload="auto" src="../deadpool.mp3"></audio>
+<audio id="winSound" preload="auto" src="/deadpool.mp3"></audio>
 <!-- SOLVED TOAST -->
 <div aria-hidden="true" class="solved-toast" id="solvedToast">
 <div class="solved-toast-inner">
