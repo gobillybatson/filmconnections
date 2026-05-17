@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Play Film Connections, it's like Connections, but with actors, actresses and movies" name="description"/>
-<title>Film Connections: Movie Cast Puzzle - 1984</title>
+<title>Film Connections: Movie Cast Puzzle - NO MARVEL!</title>
 <style>
     :root{
       --bg:#f4f5f7;
@@ -705,9 +705,9 @@
 <a aria-label="Go to today’s puzzle" class="title-button title-image-link" href="/index.html">
 <img alt="Film Connections" class="title-image" src="/images/film-connections-button.png"/>
 </a>
-<span class="title-theme">1984</span>
+<span class="title-theme">NO MARVEL!</span>
 </div>
-<p class="sub">Quite possibly the greatest year in movies</p>
+<p class="sub">This one is tough, none of the correct answers are Marvel movies</p>
 <div class="controls controls-under-sub">
 <button id="btnShuffle" type="button">Shuffle</button>
 <button id="btnDeselect" type="button">Deselect All</button>
@@ -750,33 +750,33 @@
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const GROUPS = [
-      { groupId: "ghostbusters", movieTitle: "Ghostbusters", difficulty: 1, posterImg: "/images/posters/ghostbusters1984.jpg" },
-      { groupId: "terminator", movieTitle: "The Terminator", difficulty: 2, posterImg: "/images/posters/terminator.webp" },
-      { groupId: "reddawn", movieTitle: "Red Dawn", difficulty: 3, posterImg: "/images/posters/reddawn.jpg" },
-      { groupId: "cannonball", movieTitle: "Cannonball Run II", difficulty: 4, posterImg: "/images/posters/cannonballrun2.jpg" },
+      { groupId: "ghostbusters", movieTitle: "Ghostbusters", difficulty: 1, posterImg: "/images/posters/ghostbusters.webp" },
+      { groupId: "knives_out", movieTitle: "Knives Out", difficulty: 2, posterImg: "/images/posters/knives_out.jpg" },
+      { groupId: "oppenheimer", movieTitle: "Oppenheimer", difficulty: 3, posterImg: "/images/posters/oppenheimer.webp" },
+      { groupId: "hurt_locker", movieTitle: "The Hurt Locker", difficulty: 4, posterImg: "/images/posters/hurt locker.jpeg" },
     ];
 
     // EXACTLY 16 tiles. Exactly 4 tiles per groupId.
     const TILES = [
-      { id:"a1", name:"Patrick Swayze", img:"/images/actors/swayze.webp", groupId:"reddawn" },
-      { id:"a2", name:"Charlie Sheen", img:"/images/actors/sheen.avif", groupId:"reddawn" },
-      { id:"a3", name:"Jennifer Grey", img:"/images/actors/grey.webp", groupId:"reddawn" },
-      { id:"a4", name:"C Thomas Howell", img:"/images/actors/howell.jpg", groupId:"reddawn" },
+      { id:"a1", name:"Robert Downey Jr", img:"/images/actors/downey.jpg", groupId:"oppenheimer" },
+      { id:"a2", name:"Florence Pugh", img:"/images/actors/pugh.jpeg", groupId:"oppenheimer" },
+      { id:"a3", name:"Matt Damon", img:"/images/actors/damon.webp", groupId:"oppenheimer" },
+      { id:"a4", name:"Emily Blunt", img:"/images/actors/blunt.jpg", groupId:"oppenheimer" },
 
-      { id:"b1", name:"Bill Murray", img:"/images/actors/murray.webp", groupId:"ghostbusters" },
-      { id:"b2", name:"Rick Moranis", img:"/images/actors/moranis.jpg", groupId:"ghostbusters" },
-      { id:"b3", name:"Harold Ramis", img:"/images/actors/ramis.jpg", groupId:"ghostbusters" },
-      { id:"b4", name:"Sigourney Weaver", img:"/images/actors/weaver.webp", groupId:"ghostbusters" },
+      { id:"b1", name:"Chris Hemsworth", img:"/images/actors/hemsworth.webp", groupId:"ghostbusters" },
+      { id:"b2", name:"Kristen Wiig", img:"/images/actors/wiig.jpg", groupId:"ghostbusters" },
+      { id:"b3", name:"Kate McKinnon", img:"/images/actors/mckinnnon.webp", groupId:"ghostbusters" },
+      { id:"b4", name:"Melissa McCarthy", img:"/images/actors/mccarthy.webp", groupId:"ghostbusters" },
 
-      { id:"c1", name:"Burt Reynolds", img:"/images/actors/reynolds.jpg.avif", groupId:"cannonball" },
-      { id:"c2", name:"Jackie Chan", img:"/images/actors/chan.jpg", groupId:"cannonball" },
-      { id:"c3", name:"Dean Martin", img:"/images/actors/martin.jpg", groupId:"cannonball" },
-      { id:"c4", name:"Sammy Davis Jr", img:"/images/actors/davisjr.jpg", groupId:"cannonball" },
+      { id:"c1", name:"Jeremy Renner", img:"/images/actors/renner.webp", groupId:"hurt_locker" },
+      { id:"c2", name:"Anthony Mackie", img:"/images/actors/mackie.webp", groupId:"hurt_locker" },
+      { id:"c3", name:"Ralph Fiennes", img:"/images/actors/fiennes.webp", groupId:"hurt_locker" },
+      { id:"c4", name:"Evangeline Lilly", img:"/images/actors/lilly.avif", groupId:"hurt_locker" },
 
-      { id:"d1", name:"Arnold Schwarzenegger", img:"/images/actors/schwarzenegger.jpg", groupId:"terminator" },
-      { id:"d2", name:"Linda Hamilton", img:"/images/actors/hamilton.webp", groupId:"terminator" },
-      { id:"d3", name:"Bill Paxton", img:"/images/actors/paxton.jpg", groupId:"terminator" },
-      { id:"d4", name:"Michael Biehn", img:"/images/actors/biehn.jpg", groupId:"terminator" },
+      { id:"d1", name:"Chris Evans", img:"/images/actors/evans.jpg", groupId:"knives_out" },
+      { id:"d2", name:"Don Johnson", img:"/images/actors/johnson.webp", groupId:"knives_out" },
+      { id:"d3", name:"Jamie Lee Curtis", img:"/images/actors/curtis.webp", groupId:"knives_out" },
+      { id:"d4", name:"Daniel Craig", img:"/images/actors/craig.webp", groupId:"knives_out" },
     ];
 
 
